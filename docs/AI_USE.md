@@ -7,8 +7,6 @@ Updated: Assignment 2 (September 13, 2026)
 - Claude (Anthropic, web) — used to plan the project scope and to draft a shell
   script that created the folder structure, `.gitignore`, `LICENSE`, `README.md`,
   and this file's skeleton, and that ran the `uv init` / `uv add` commands.
-- ChatGPT (OpenAI) — used as a second opinion on project scoping (which topic to
-  pursue and what to exclude from the class project).
 
 ## Where I used them
 
@@ -27,12 +25,7 @@ Updated: Assignment 2 (September 13, 2026)
 - Assignment 3's research question and hypothesis will be my own work.
 
 ## What the tool got wrong and I caught
-
-<!-- REQUIRED. Replace this with one real thing. Examples of the kind of thing to
-     look for while running the script tonight: a command flag that did not exist
-     on your UV version, a file uv init created that the script did not expect,
-     a .gitignore rule that hid something you needed, a README step that did not
-     work on your OS. Be specific: what it said, what actually happened. -->
+The AI-drafted setup script and README were written for a UNIX/MAC environment; running it on Windows through Git Bash, Git warned on every file that LF line endings would be replaced by CRLF, and neither the script nor the README anticipated or documented Windows line-ending behavior.
 
 ## Verification
 
