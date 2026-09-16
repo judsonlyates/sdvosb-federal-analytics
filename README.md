@@ -27,7 +27,7 @@ goal compliance under the SBA scorecard.
 ## Repository structure
 
 ```
-src/sdvosb_analytics/   Python package: ETL, analysis, and dashboard code
+src/sdvosb_federal_analytics/   Python package: ETL, analysis, and dashboard code
 tests/                  Unit tests
 docs/                   Documentation, including AI_USE.md
 data/raw/               Source extracts (git-ignored)

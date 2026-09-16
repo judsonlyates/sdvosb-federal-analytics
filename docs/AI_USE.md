@@ -1,6 +1,6 @@
 # AI Use Disclosure
 
-Updated: Assignment 2 (September 13, 2026)
+Updated: Assignment 2 feedback revisions (September 16, 2026)
 
 ## Tools used
 
@@ -17,6 +17,7 @@ Updated: Assignment 2 (September 13, 2026)
   ran it myself, reviewed the resulting files and commit history, and made the
   final commit and push by hand.
 - Deciding the project topic and its boundaries.
+- Assignment 2 feedback revisions (removing the duplicate package, correcting the README structure map, adding tests/test_smoke.py) were drafted with Claude; I ran the commands and the test myself and confirmed 1 passed.
 
 ## Where I deliberately did not
 
