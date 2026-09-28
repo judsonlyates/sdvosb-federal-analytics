@@ -5,11 +5,7 @@ Author: Judson L. Yates
 
 ## Project description
 
-This repository is the semester-long portfolio project for BUS 751. It builds an
-end-to-end analytics pipeline over U.S. federal contract award data
-(USAspending / FPDS-NG) to describe the federal market for Service-Disabled
-Veteran-Owned Small Businesses (SDVOSBs): obligations, distinct awards, awarding
-agencies, industries (NAICS), and trends over a bounded set of fiscal years.
+This repository is the semester-long portfolio project for BUS 751. It examines whether federal agencies further below the 5% SDVOSB contracting benchmark before the FY2024 NDAA goal increase showed larger subsequent increases in SBA-reported SDVOSB achievement. It uses an agency-year panel built from SBA's annual Small Business Procurement Scorecards (FY2020-FY2025). The full proposal is in `docs/proposal.md`; a verified three-agency sample is in `data/sample/`.
 
 Planned components, one per assignment:
 
@@ -21,8 +17,7 @@ Planned components, one per assignment:
 | A6 | One analytics/modeling module appropriate to the data |
 | A7 | Streamlit dashboard and Docker deployment |
 
-The scope is deliberately descriptive. It is not an official measure of agency
-goal compliance under the SBA scorecard.
+The analysis is an associational pilot: it estimates whether changes in SBA-reported SDVOSB achievement varied with agencies' pre-policy distance below 5%. It does not estimate the causal effect of the goal increase.
 
 ## Repository structure
 
@@ -32,6 +27,8 @@ tests/                  Unit tests
 docs/                   Documentation, including AI_USE.md
 data/raw/               Source extracts (git-ignored)
 data/processed/         Cleaned outputs and SQLite database (git-ignored)
+data/sample/                 Verified SBA scorecard sample (tracked)
+scripts/                     Feasibility and validation scripts
 notebooks/              Exploratory Jupyter notebooks
 pyproject.toml          Project metadata and dependencies (managed by UV)
 ```
