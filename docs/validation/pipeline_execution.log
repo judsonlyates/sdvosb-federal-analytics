@@ -1,0 +1,76 @@
+{
+  "status": "success",
+  "input_template_rows": 144,
+  "rows": 144,
+  "duplicate_record_count": 0,
+  "rejected_record_count": 0,
+  "missing_cells_by_field": {
+    "sdvosb_prime_achievement_pct": 1,
+    "sdvosb_prime_goal_pct": 1,
+    "sdvosb_prime_dollars_millions": 1
+  },
+  "bad_record_action": "Fail the batch on malformed, duplicate, missing-source or conflicting records; keep previous database. Source-declared N/A is retained as NULL and flagged; negatives are retained and flagged.",
+  "agencies": 24,
+  "achievement_count": 143,
+  "goal_count": 143,
+  "dollars_count": 143,
+  "complete_three_field_rows": 143,
+  "counts_by_year": {
+    "2020": {
+      "sdvosb_prime_achievement_pct": 24,
+      "sdvosb_prime_goal_pct": 24,
+      "sdvosb_prime_dollars_millions": 24
+    },
+    "2021": {
+      "sdvosb_prime_achievement_pct": 24,
+      "sdvosb_prime_goal_pct": 24,
+      "sdvosb_prime_dollars_millions": 24
+    },
+    "2022": {
+      "sdvosb_prime_achievement_pct": 24,
+      "sdvosb_prime_goal_pct": 24,
+      "sdvosb_prime_dollars_millions": 24
+    },
+    "2023": {
+      "sdvosb_prime_achievement_pct": 24,
+      "sdvosb_prime_goal_pct": 24,
+      "sdvosb_prime_dollars_millions": 24
+    },
+    "2024": {
+      "sdvosb_prime_achievement_pct": 24,
+      "sdvosb_prime_goal_pct": 24,
+      "sdvosb_prime_dollars_millions": 24
+    },
+    "2025": {
+      "sdvosb_prime_achievement_pct": 23,
+      "sdvosb_prime_goal_pct": 23,
+      "sdvosb_prime_dollars_millions": 23
+    }
+  },
+  "source_errors": [],
+  "overlap_checks": 336,
+  "overlap_conflicts": 0,
+  "adjacent_edition_checks": 120,
+  "sample_values_compared": 48,
+  "sample_conflicts": 0,
+  "agencies_with_complete_baseline": 24,
+  "baseline_shortfall_positive": 12,
+  "negative_achievement_rows": [
+    {
+      "agency_id": "HUD",
+      "observation_fy": 2020,
+      "achievement_pct": "-5.04"
+    },
+    {
+      "agency_id": "HUD",
+      "observation_fy": 2021,
+      "achievement_pct": "-1.57"
+    }
+  ],
+  "source_document_count": 55,
+  "quality_flag_count": 304,
+  "analysis_ready_observations": 143,
+  "pipeline_mode": "full",
+  "database_replaced": true
+}
+Outputs written to data/processed

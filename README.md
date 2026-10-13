@@ -1,77 +1,95 @@
 # SDVOSB Federal Market Analytics
 
-BUS 751 – Python for Business Analytics (Fall 2026, University of South Alabama)
+BUS 751, Python for Business Analytics · Fall 2026 · University of South Alabama
 Author: Judson L. Yates
 
-## Project description
+## Project and Assignment 4
 
-This repository is the semester-long portfolio project for BUS 751. It examines whether federal agencies further below the 5% SDVOSB contracting benchmark before the FY2024 NDAA goal increase showed larger subsequent increases in SBA-reported SDVOSB achievement. It uses an agency-year panel built from SBA's annual Small Business Procurement Scorecards (FY2020-FY2025). The full proposal is in `docs/proposal.md`; a verified three-agency sample is in `data/sample/`.
+This semester-long portfolio examines whether agencies further below the 5% SDVOSB contracting benchmark before the FY2024 goal increase subsequently showed larger increases in SBA-reported achievement. It is an associational pilot, not a causal estimate. The approved proposal remains in [`docs/proposal.md`](docs/proposal.md).
 
-Planned components, one per assignment:
+Assignment 4 implements the database and reproducible extract–transform–load pipeline. The frozen public SBA sources yield 144 agency-years (24 agencies, FY2020–FY2025), including 143 complete observations and one explicit USAID FY2025 N/A row. The A3 sample is unchanged: all 48 populated numerical cells reconcile. EDA, regression, and the dashboard remain later assignments.
 
-| Assignment | Component |
-|---|---|
-| A3 | Problem definition and data source plan (frozen, documented CSV extract) |
-| A4 | SQLite schema and ETL script (import, validate, clean, store) |
-| A5 | Exploratory data analysis module (summaries and visualizations) |
-| A6 | One analytics/modeling module appropriate to the data |
-| A7 | Streamlit dashboard and Docker deployment |
+## Setup
 
-The analysis is an associational pilot: it estimates whether changes in SBA-reported SDVOSB achievement varied with agencies' pre-policy distance below 5%. It does not estimate the causal effect of the goal increase.
+Use Python 3.11 managed by [UV](https://docs.astral.sh/uv/) and the `pdftotext` command supplied by Poppler.
 
-## Repository structure
-
-```
-src/sdvosb_federal_analytics/   Python package: ETL, analysis, and dashboard code
-tests/                  Unit tests
-docs/                   Documentation, including AI_USE.md
-data/raw/               Source extracts (git-ignored)
-data/processed/         Cleaned outputs and SQLite database (git-ignored)
-data/sample/                 Verified SBA scorecard sample (tracked)
-scripts/                     Feasibility and validation scripts
-notebooks/              Exploratory Jupyter notebooks
-pyproject.toml          Project metadata and dependencies (managed by UV)
-```
-
-## Setup instructions
-
-Prerequisites: Git and [UV](https://docs.astral.sh/uv/). UV installs and manages
-Python for you; you do not need a separate Python or Anaconda install.
-
-1. Install UV (once):
-   - macOS/Linux: `curl -LsSf https://astral.sh/uv/install.sh | sh`
-   - Windows (PowerShell): `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
-   Confirm with `uv --version`.
-2. Clone the repository:
-   ```
+1. Install Git and UV using their official instructions, then clone the existing portfolio:
+   ```sh
    git clone https://github.com/judsonlyates/sdvosb-federal-analytics.git
    cd sdvosb-federal-analytics
    ```
-3. Create the environment and install all dependencies from the lockfile:
+2. Install Poppler if `pdftotext -v` is unavailable:
+   - macOS with Homebrew: `brew install poppler`
+   - Debian/Ubuntu: `sudo apt-get install poppler-utils`
+   - Windows: the documented cross-platform route is Ubuntu under WSL with the Debian/Ubuntu command above. Run the remaining commands inside that environment. A native Windows installation must separately provide `pdftotext` on PATH; native Windows was not tested for this submission preparation.
+3. Install the locked project environment:
+   ```sh
+   uv sync --locked
    ```
-   uv sync
+4. Confirm the external parser is on PATH:
+   ```sh
+   pdftotext -v
    ```
-4. Verify:
-   ```
-   uv run python -c "import pandas, numpy; print(pandas.__version__, numpy.__version__)"
-   ```
-5. Launch Jupyter:
-   ```
-   uv run jupyter lab
-   ```
-   In VS Code, select the interpreter at `.venv` when prompted.
 
-## UV commands used in this project
+UV installs the pinned Python version if necessary. `uv.lock` and the existing dependency versions are preserved. Setup downloads require internet access; the frozen pipeline and tests need no internet after setup.
 
-| Command | Purpose |
+## One command: complete offline pipeline
+
+Run from the repository root:
+
+```sh
+uv run --locked python -m sdvosb_federal_analytics.etl --offline --raw-dir data/raw/20261011T183300Z
+```
+
+This verifies all 55 source hashes, re-extracts the JSON and original PDFs, validates and reconciles the data, derives the approved exposure/inclusion fields, and builds `data/processed/scorecards.sqlite`. It also writes the full ten-column CSV, derived panel CSV, row provenance, flags, overlap comparisons, sample reconciliation, `validation_summary.json`, and `pipeline.log`.
+
+A malformed or conflicting source produces a nonzero exit and an explicit diagnostic. Invalid batches cannot replace the previous valid database. Missing values declared by the source are retained as NULL, never zero. Source-reported negative achievements/dollars are retained and flagged.
+
+## Automated checks and re-runnability
+
+```sh
+uv run --locked pytest -q
+uv run --locked python -m sdvosb_federal_analytics.verify_rerun
+uv run --locked python scripts/feasibility_check.py data/processed/sba_scorecard_sdvosb.csv
+```
+
+The re-runnability command executes the complete pipeline twice against the same output path and compares every table's row count and sorted logical contents, exported CSV hashes, duplicate fact keys, and database integrity checks. Evidence is written to `data/processed/rerun_verification.json`. The committed preparation evidence is in [`docs/validation/`](docs/validation/).
+
+## Evidence map
+
+| Assignment 4 evidence | Location |
 |---|---|
-| `uv init --python 3.11` | Initialize the project and pin Python 3.11 |
-| `uv add <package>` | Add a dependency (updates `pyproject.toml` and `uv.lock`) |
-| `uv remove <package>` | Remove a dependency |
-| `uv sync` | Create `.venv` and install exactly what the lockfile specifies |
-| `uv run <command>` | Run a command inside the project environment |
-| `uv python list` | Show installed and available Python versions |
+| Schema, keys, constraints, indexes | `src/sdvosb_federal_analytics/schema.sql` |
+| ERD, normalization rationale, relationships | [`docs/ERD.md`](docs/ERD.md) |
+| Every table/field/type/key/source/business rule | [`docs/DATA_DICTIONARY.md`](docs/DATA_DICTIONARY.md) |
+| Importable extraction/transformation/loading | `src/sdvosb_federal_analytics/etl.py` |
+| Proposal-defined derived panel | `src/sdvosb_federal_analytics/panel.py` |
+| Validation, logging, failure and refresh behavior | [`docs/PIPELINE.md`](docs/PIPELINE.md) |
+| Quality results, explicit missingness/rejections | `docs/validation/validation_summary.json` |
+| Two-run row counts and logical hashes | `docs/validation/rerun_verification.json` |
+| Tests and execution environment | [`docs/VALIDATION.md`](docs/VALIDATION.md) |
+| Source comparability limitations | [`docs/DATA_QUALITY.md`](docs/DATA_QUALITY.md) |
+| Student walkthrough and review checklist | [`docs/WALKTHROUGH.md`](docs/WALKTHROUGH.md) |
+| AI use and verification ownership | [`docs/AI_USE.md`](docs/AI_USE.md) |
 
-## AI use
+## Sources and safe review
 
-See `docs/AI_USE.md`.
+The repository tracks one small, public SBA snapshot, approximately 5.3 MB across 55 government source documents plus its manifest. These are HTML/JavaScript text, annual JSON, and FY2020 scorecard PDFs. Downloaded JavaScript is inspected only as source text and is never executed. `.gitattributes` preserves the frozen bytes across line-ending conversions. No confidential records, credentials, transaction-level extracts, or personal data are required.
+
+All other raw snapshots and generated databases/exports remain ignored. The original 144-row A3 sample remains tracked at `data/sample/sba_scorecard_sdvosb.csv`; its 18 populated observations are the reconciliation baseline. The frozen sources make the complete offline review reproducible from a fresh clone.
+
+To collect a new official-source snapshot, choose a new, empty folder:
+
+```sh
+uv run --locked python -m sdvosb_federal_analytics.etl --raw-dir data/raw/new-snapshot --output-dir data/processed/refreshed
+```
+
+A refresh uses only public SBA sources and needs no API key. New data are compared with the original sample; source changes that conflict with it require review. Never overwrite the frozen snapshot. `--json-only` is a reduced diagnostic mode that leaves FY2020 goals/dollars blank; it is not the complete A4 result.
+
+## Interpretation boundaries
+
+Read `docs/DATA_QUALITY.md` before analysis. The FY2021–FY2023 baseline straddles SBA's FY2022 deobligation-methodology change. DOE's later abbreviated footnotes do not establish a change in M&O treatment. VA FY2023 remains the verified SBA value of 27.16%, with a different 16.7% measure flagged rather than substituted. FY2025 certification changes are another comparability caveat. Passing ETL checks does not establish the hypothesis or causality.
+
+## Later course components
+
+A5: exploratory analysis. A6: modeling and robustness. A7: dashboard and deployment. These components are outside the A4 implementation.

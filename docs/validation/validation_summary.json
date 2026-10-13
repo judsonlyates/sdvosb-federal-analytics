@@ -1,0 +1,303 @@
+{
+  "status": "success",
+  "input_template_rows": 144,
+  "rows": 144,
+  "duplicate_record_count": 0,
+  "rejected_record_count": 0,
+  "missing_cells_by_field": {
+    "sdvosb_prime_achievement_pct": 1,
+    "sdvosb_prime_goal_pct": 1,
+    "sdvosb_prime_dollars_millions": 1
+  },
+  "bad_record_action": "Fail the batch on malformed, duplicate, missing-source or conflicting records; keep previous database. Source-declared N/A is retained as NULL and flagged; negatives are retained and flagged.",
+  "agencies": 24,
+  "achievement_count": 143,
+  "goal_count": 143,
+  "dollars_count": 143,
+  "complete_three_field_rows": 143,
+  "counts_by_year": {
+    "2020": {
+      "sdvosb_prime_achievement_pct": 24,
+      "sdvosb_prime_goal_pct": 24,
+      "sdvosb_prime_dollars_millions": 24
+    },
+    "2021": {
+      "sdvosb_prime_achievement_pct": 24,
+      "sdvosb_prime_goal_pct": 24,
+      "sdvosb_prime_dollars_millions": 24
+    },
+    "2022": {
+      "sdvosb_prime_achievement_pct": 24,
+      "sdvosb_prime_goal_pct": 24,
+      "sdvosb_prime_dollars_millions": 24
+    },
+    "2023": {
+      "sdvosb_prime_achievement_pct": 24,
+      "sdvosb_prime_goal_pct": 24,
+      "sdvosb_prime_dollars_millions": 24
+    },
+    "2024": {
+      "sdvosb_prime_achievement_pct": 24,
+      "sdvosb_prime_goal_pct": 24,
+      "sdvosb_prime_dollars_millions": 24
+    },
+    "2025": {
+      "sdvosb_prime_achievement_pct": 23,
+      "sdvosb_prime_goal_pct": 23,
+      "sdvosb_prime_dollars_millions": 23
+    }
+  },
+  "missing": [
+    {
+      "agency_id": "USAID",
+      "observation_fy": 2025,
+      "fields": [
+        "sdvosb_prime_achievement_pct",
+        "sdvosb_prime_goal_pct",
+        "sdvosb_prime_dollars_millions"
+      ]
+    }
+  ],
+  "source_errors": [],
+  "overlap_checks": 336,
+  "overlap_conflicts": 0,
+  "adjacent_edition_checks": 120,
+  "sample_values_compared": 48,
+  "sample_conflicts": 0,
+  "agencies_with_complete_baseline": 24,
+  "baseline_shortfall_positive": 12,
+  "baseline_exposure": [
+    {
+      "agency_id": "USAID",
+      "baseline_average_pct": 0.4633333333333333,
+      "shortfall_pp": 4.536666666666667,
+      "available_post_years": [
+        2024
+      ]
+    },
+    {
+      "agency_id": "USDA",
+      "baseline_average_pct": 4.723333333333334,
+      "shortfall_pp": 0.27666666666666667,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "DOC",
+      "baseline_average_pct": 6.696666666666666,
+      "shortfall_pp": 0.0,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "ED",
+      "baseline_average_pct": 1.4633333333333334,
+      "shortfall_pp": 3.5366666666666666,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "DOE",
+      "baseline_average_pct": 2.033333333333333,
+      "shortfall_pp": 2.966666666666667,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "HHS",
+      "baseline_average_pct": 2.04,
+      "shortfall_pp": 2.96,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "DHS",
+      "baseline_average_pct": 6.44,
+      "shortfall_pp": 0.0,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "HUD",
+      "baseline_average_pct": 2.7,
+      "shortfall_pp": 2.3,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "DOI",
+      "baseline_average_pct": 5.543333333333333,
+      "shortfall_pp": 0.0,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "DOJ",
+      "baseline_average_pct": 8.573333333333334,
+      "shortfall_pp": 0.0,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "DOL",
+      "baseline_average_pct": 6.7,
+      "shortfall_pp": 0.0,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "DOS",
+      "baseline_average_pct": 3.9033333333333333,
+      "shortfall_pp": 1.0966666666666667,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "DOT",
+      "baseline_average_pct": 4.083333333333333,
+      "shortfall_pp": 0.9166666666666666,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "TREAS",
+      "baseline_average_pct": 3.8966666666666665,
+      "shortfall_pp": 1.1033333333333333,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "VA",
+      "baseline_average_pct": 22.456666666666667,
+      "shortfall_pp": 0.0,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "DOD",
+      "baseline_average_pct": 3.08,
+      "shortfall_pp": 1.92,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "EPA",
+      "baseline_average_pct": 2.5966666666666667,
+      "shortfall_pp": 2.4033333333333333,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "GSA",
+      "baseline_average_pct": 9.87,
+      "shortfall_pp": 0.0,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "NASA",
+      "baseline_average_pct": 1.7966666666666666,
+      "shortfall_pp": 3.203333333333333,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "NSF",
+      "baseline_average_pct": 5.37,
+      "shortfall_pp": 0.0,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "NRC",
+      "baseline_average_pct": 6.253333333333333,
+      "shortfall_pp": 0.0,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "OPM",
+      "baseline_average_pct": 9.8,
+      "shortfall_pp": 0.0,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "SBA",
+      "baseline_average_pct": 36.53333333333333,
+      "shortfall_pp": 0.0,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "agency_id": "SSA",
+      "baseline_average_pct": 9.74,
+      "shortfall_pp": 0.0,
+      "available_post_years": [
+        2024,
+        2025
+      ]
+    }
+  ],
+  "negative_achievement_rows": [
+    {
+      "agency_id": "HUD",
+      "observation_fy": 2020,
+      "achievement_pct": "-5.04"
+    },
+    {
+      "agency_id": "HUD",
+      "observation_fy": 2021,
+      "achievement_pct": "-1.57"
+    }
+  ],
+  "source_document_count": 55,
+  "quality_flag_count": 304,
+  "analysis_ready_observations": 143,
+  "pipeline_mode": "full",
+  "database_replaced": true
+}
