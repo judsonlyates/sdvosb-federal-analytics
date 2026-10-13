@@ -1,6 +1,6 @@
 # AI Use Disclosure
 
-Updated: Assignment 2 feedback revisions (September 16, 2026)
+The A2 and A3 disclosures are preserved as written at the time. The A4 disclosure (October 11–12, 2026) follows them.
 
 ## Tools used
 
@@ -22,7 +22,7 @@ Updated: Assignment 2 feedback revisions (September 16, 2026)
 ## Where I deliberately did not
 
 - Creating the GitHub repository and configuring my Git credentials.
-- This disclosure file's substance, which I wrote and verified.
+- This disclosure file's substance for A2 and A3, which I wrote and verified. (The A4 section below was drafted with AI assistance at my direction and is explicit about who did what.)
 - Assignment 3's research question and hypothesis will be my own work.
 
 ## What the tool got wrong and I caught
@@ -55,3 +55,92 @@ I ran every command in the README on my own machine and confirmed
 - The draft claimed goal credit changed on August 5, 2024. SBA's August 1, 2024 clarification says certification was not required by that date; the goaling requirement begins October 1, 2024, with self-certification allowed through December 22, 2024.
 - The draft decision rule counted a positive result in either year as support for H1. Corrected to evaluate each year separately and report mixed results as mixed.
 - A CSV note attributed Puerto Rico/territory language to DOE's FY2023 footnote. Corrected to match the actual footnote.
+
+## Assignment 4 (October 11–12, 2026)
+
+### Tools used, and for what
+
+- **OpenAI Codex (October 11–12).** Collected the remaining public SBA
+  scorecards (FY2021–FY2025 annual JSON, the 24 FY2020 PDFs, and the discovery
+  HTML/JavaScript), wrote and tested the collector, integrated the importable ETL
+  into this repository, drafted `schema.sql`, `panel.py`, `verify_rerun.py`, the
+  tests, the ERD, the data dictionary, `PIPELINE.md`, `DATA_QUALITY.md`,
+  `VALIDATION.md` (Section A), `WALKTHROUGH.md`, the README changes, and the
+  review package I then sent out for a second opinion. It also identified and
+  documented the source issues listed under "Errors caught."
+- **Claude (Anthropic, October 12).** Ran an independent audit of that package
+  against the A4 rubric, starting from the package alone: extracted the archive, ran the
+  documented commands, recomputed the derived panel from the raw files with its
+  own code, ran fault injections and database probes, and reported findings
+  (recorded in `VALIDATION.md`, Section B). I then put Claude in charge of
+  execution: it applied the five fixes it had found, added two tests, wrote
+  this A4 section and the final `WALKTHROUGH.md` and `VALIDATION.md` text at my
+  direction, regenerated the evidence in `docs/validation/`, and made the A4
+  commits. Those commits carry a `Co-Authored-By` line naming it.
+- **ChatGPT Pro.** A second independent review was planned with the same
+  package and prompt. It had not been completed when this update was pushed, so
+  no ChatGPT finding is incorporated or claimed here.
+
+### What I decided and did myself
+
+- The research design is unchanged from my approved A3 proposal: agency-year
+  unit, FY2021–FY2023 baseline, exposure `max(0, 5 − mean)`, the inclusion rule,
+  and the associational (not causal) scope. The proposal and the A3 sample are
+  byte-identical to the base commit.
+- I decided to commission two independent reviews before submitting rather than
+  push the preparation output directly, read the Claude audit's verdict and
+  findings, and authorized the fixes, this disclosure's wording, and the push.
+- Creating the repository, Git credentials, and the earlier commits remain my
+  own work as disclosed above.
+
+### Verification performed, and by whom
+
+- Codex ran the test suite and the two-run check in its own Linux environment
+  (`VALIDATION.md`, Section A).
+- Claude ran them again independently in a second Linux environment, plus the
+  recomputation, probes, and fault injections (`VALIDATION.md`, Section B).
+- I had not run the A4 commands on my own Windows machine when this was pushed.
+  The README documents the route (WSL, or Poppler's `pdftotext` on PATH). I am
+  stating that plainly rather than claiming a local run that did not happen.
+- The optional base-R check was not run by anyone; R was unavailable in both
+  environments.
+
+### Errors caught
+
+Caught by Codex during preparation:
+
+- The A3 feasibility script rejected all negative achievement values. The full
+  official panel includes real HUD negatives, so the revised check preserves
+  signed achievement and keeps the 0–100 rule for goals.
+- The standalone collector lacked the proposed materialized `panel_agency_year`
+  table and repository-specific A4 evidence; integration added the derived
+  table, normalized relations, ERD, field dictionary, logging, rejection
+  metrics, and two-run evidence.
+- Failure behavior was strengthened so a missing or corrupt source or a conflict
+  does not replace a previously valid database.
+
+Caught by the Claude audit (all low severity, none affecting the data; fixed
+before this push and covered by the two added tests):
+
+- The failure log always said the previous database was not replaced, even when
+  the failure happened after a validated database had already been written.
+- A batch rejected for a missing FY2020 PDF reported zero rejected records.
+- The `own_year_pdf` flag text asserted a FY2021 cross-check that is skipped
+  when the prior-year value is blank.
+- A raw-text prime-table guard in the PDF parser could never fire; the layout
+  pass is the real boundary check.
+- The console script still printed the A2 "Hello" placeholder.
+
+Caught by me: the A4 errors above were found by the assistants' checks, not by
+me, and I am recording that rather than claiming otherwise. What I caught at the
+process level was that the preparation output was being presented to me as
+verified by one assistant alone; I required a second, independent, executed
+review before anything was pushed, and that review found the items listed.
+
+### Review status at push
+
+The design and data rules in this repository are mine and I can explain them.
+I read the audit verdict and findings before authorizing this push. The
+line-by-line read of the A4 code and the local run are items on the
+`WALKTHROUGH.md` checklist, which records what was and was not complete at push
+time; I will complete it before the A5 work begins.
