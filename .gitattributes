@@ -1,0 +1,8 @@
+# Frozen bytes must survive Windows Git autocrlf unchanged for SHA-256 replay.
+# Treat source snapshots as immutable byte artifacts in Git diffs.
+data/raw/20261011T183300Z/** -text -diff
+data/sample/sba_scorecard_sdvosb.csv -text
+*.py text eol=lf
+*.sql text eol=lf
+*.md text eol=lf
+*.toml text eol=lf

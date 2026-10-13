@@ -1,0 +1,146 @@
+[
+  {
+    "agency_id": "USAID",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/USAID-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-agency-international-development-contracting-scorecard",
+    "agency_name_as_displayed": "Agency for International Development"
+  },
+  {
+    "agency_id": "USDA",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/USDA-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-department-agriculture-contracting-scorecard",
+    "agency_name_as_displayed": "Department of Agriculture"
+  },
+  {
+    "agency_id": "DOC",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/DOC-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-department-commerce-contracting-scorecard",
+    "agency_name_as_displayed": "Department of Commerce"
+  },
+  {
+    "agency_id": "DOD",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/DOD-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-department-defense-contracting-scorecard",
+    "agency_name_as_displayed": "Department of Defense"
+  },
+  {
+    "agency_id": "ED",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/EDU-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-department-education-contracting-scorecard",
+    "agency_name_as_displayed": "Department of Education"
+  },
+  {
+    "agency_id": "DOE",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/DOE-508_0.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-department-energy-contracting-scorecard",
+    "agency_name_as_displayed": "Department of Energy"
+  },
+  {
+    "agency_id": "HHS",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/HHS-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-department-health-human-services-contracting-scorecard",
+    "agency_name_as_displayed": "Department of Health and Human Services"
+  },
+  {
+    "agency_id": "DHS",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/DHS-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-department-homeland-security-contracting-scorecard",
+    "agency_name_as_displayed": "Department of Homeland Security"
+  },
+  {
+    "agency_id": "HUD",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/HUD-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-department-housing-urban-development-contracting-scorecard",
+    "agency_name_as_displayed": "Department of Housing and Urban Development"
+  },
+  {
+    "agency_id": "DOI",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/DOI-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-department-interior-contracting-scorecards",
+    "agency_name_as_displayed": "Department of the Interior"
+  },
+  {
+    "agency_id": "DOJ",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/DOJ-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-department-justice-contracting-scorecard",
+    "agency_name_as_displayed": "Department of Justice"
+  },
+  {
+    "agency_id": "DOL",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/DOL-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-department-labor-contracting-scorecard",
+    "agency_name_as_displayed": "Department of Labor"
+  },
+  {
+    "agency_id": "DOS",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/State-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-department-state-contracting-scorecard",
+    "agency_name_as_displayed": "Department of State"
+  },
+  {
+    "agency_id": "DOT",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/DOT-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-department-transportation-contracting-scorecard",
+    "agency_name_as_displayed": "Department of Transportation"
+  },
+  {
+    "agency_id": "TREAS",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/Treas-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-department-treasury-contracting-scorecards",
+    "agency_name_as_displayed": "Department of the Treasury"
+  },
+  {
+    "agency_id": "VA",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/VA-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-department-veterans-affairs-contracting-scorecard",
+    "agency_name_as_displayed": "Department of Veterans Affairs"
+  },
+  {
+    "agency_id": "EPA",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/EPA-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-environmental-protection-agency-contracting-scorecard",
+    "agency_name_as_displayed": "Environmental Protection Agency"
+  },
+  {
+    "agency_id": "GSA",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/GSA-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-general-services-administration-contracting-scorecard",
+    "agency_name_as_displayed": "General Services Administration"
+  },
+  {
+    "agency_id": "NASA",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/NASA-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-national-aeronautics-space-administration-contracting-scorecard",
+    "agency_name_as_displayed": "National Aeronautics and Space Administration"
+  },
+  {
+    "agency_id": "NSF",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/NSF-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-national-science-foundation-contracting-scorecard",
+    "agency_name_as_displayed": "National Science Foundation"
+  },
+  {
+    "agency_id": "NRC",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/NRC-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-nuclear-regulatory-commission-contracting-scorecard",
+    "agency_name_as_displayed": "Nuclear Regulatory Commission"
+  },
+  {
+    "agency_id": "OPM",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/OPM-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-office-personnel-management-contracting-scorecard",
+    "agency_name_as_displayed": "Office of Personnel Management"
+  },
+  {
+    "agency_id": "SBA",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/SBA-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-small-business-administration-contracting-scorecard",
+    "agency_name_as_displayed": "Small Business Administration"
+  },
+  {
+    "agency_id": "SSA",
+    "source_url": "https://legacy.sba.gov/sites/default/files/2021-07/SSA-508.pdf",
+    "source_page_url": "https://legacy.sba.gov/document/support-social-security-administration-contracting-scorecard",
+    "agency_name_as_displayed": "Social Security Administration"
+  }
+]

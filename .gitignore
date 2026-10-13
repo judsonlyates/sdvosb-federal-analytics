@@ -17,3 +17,8 @@ data/processed/*
 .env
 .vscode/
 .DS_Store
+
+# A4 review fixture: one small, public, immutable SBA source snapshot.
+!data/raw/20261011T183300Z/
+!data/raw/20261011T183300Z/**
+.pytest_cache/
