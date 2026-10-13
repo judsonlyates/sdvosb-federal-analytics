@@ -1,66 +1,43 @@
-"""A3 feasibility check on hand-collected SBA scorecard data.
-
-Enter percentages as plain numbers: 4.25 means 4.25%. A trailing % sign is accepted.
-Blank cells are treated as not yet collected.
-
-Usage: uv run python scripts/feasibility_check.py data/sample/sba_scorecard_sdvosb.csv
-"""
+#!/usr/bin/env python3
+"""Validate the collected panel, retaining source-reported negative achievement."""
+from decimal import Decimal
+from pathlib import Path
 import sys
-import pandas as pd
-
-PRE_BASE = [2021, 2022, 2023]
-POST = [2024, 2025]
-NEW_GOAL = 5.0
-PCT_COLS = ["sdvosb_prime_achievement_pct", "sdvosb_prime_goal_pct"]
+from sdvosb_federal_analytics.etl import read_csv, parse_pct, DataError, NUMERIC, YEARS
 
 
-def parse_pct(series: pd.Series, name: str) -> pd.Series:
-    raw = series.astype("string").str.strip().str.rstrip("%").str.strip()
-    raw = raw.mask(raw == "")
-    out = pd.to_numeric(raw, errors="coerce")
-    bad = raw.notna() & out.isna()
-    if bad.any():
-        sys.exit(f"ERROR: non-numeric values in {name}: {sorted(series[bad].unique())}")
-    if ((out < 0) | (out > 100)).any():
-        sys.exit(f"ERROR: {name} has values outside 0-100")
-    return out
+def main(path):
+    rows=read_csv(Path(path))
+    seen=set()
+    for r in rows:
+        key=(r['agency_id'],int(r['observation_fy']))
+        if key in seen: raise DataError(f'Duplicate agency-year: {key}')
+        seen.add(key)
+        for field in NUMERIC[:2]:
+            r[field]=parse_pct(r[field],goal=(field==NUMERIC[1]))
+        if r[NUMERIC[2]]:
+            if not Decimal(r[NUMERIC[2]]).is_finite(): raise DataError('Non-finite dollar amount')
+        if any(r[f] for f in NUMERIC) and not all(r[f] for f in ('source_url','retrieved_date','scorecard_fy')):
+            raise DataError(f'Missing source metadata: {key}')
+    print(f'{len(rows)} rows; {len({r["agency_id"] for r in rows})} agencies')
+    for y in YEARS:
+        yr=[r for r in rows if int(r['observation_fy'])==y]
+        print(f'FY{y}: '+', '.join(f'{f}={sum(r[f]!="" for r in yr)}/{len(yr)}' for f in NUMERIC))
+    exposures=[]
+    for a in dict.fromkeys(r['agency_id'] for r in rows):
+        base=[r for r in rows if r['agency_id']==a and int(r['observation_fy']) in (2021,2022,2023)]
+        post=[r for r in rows if r['agency_id']==a and int(r['observation_fy']) in (2024,2025) and r[NUMERIC[0]]]
+        if len(base)==3 and all(r[NUMERIC[0]] for r in base) and post:
+            avg=sum(Decimal(r[NUMERIC[0]]) for r in base)/3
+            exposures.append((a,avg,max(Decimal(0),Decimal(5)-avg)))
+    print(f'Agencies meeting submitted inclusion rule: {len(exposures)}')
+    print(f'Positive baseline shortfall: {sum(s>0 for _,_,s in exposures)}; zero shortfall: {sum(s==0 for _,_,s in exposures)}')
+    for a,avg,s in sorted(exposures,key=lambda x:x[2],reverse=True): print(f'{a}: FY2021–23 mean={avg:.4f}%; shortfall={s:.4f} percentage points')
+    negatives=[r for r in rows if r[NUMERIC[0]] and Decimal(r[NUMERIC[0]])<0]
+    print(f'Negative achievements retained and flagged: {len(negatives)}')
+    print('No imputation. This check does not establish causal or cross-year measurement comparability.')
 
-
-df = pd.read_csv(sys.argv[1], dtype=str, keep_default_na=False, na_values=[""])
-for c in PCT_COLS:
-    df[c] = parse_pct(df[c], c)
-df["observation_fy"] = pd.to_numeric(df["observation_fy"], errors="raise").astype(int)
-
-filled = df[df[PCT_COLS].notna().any(axis=1)]
-dupes = filled.duplicated(["agency_id", "observation_fy"], keep=False)
-if dupes.any():
-    sys.exit(f"ERROR: duplicate agency-year rows:\n{filled.loc[dupes, ['agency_id', 'observation_fy', 'scorecard_fy']]}")
-
-frac = filled["sdvosb_prime_goal_pct"].dropna()
-if len(frac) and (frac < 1).all():
-    print("WARNING: every goal value is below 1 - were percentages entered as fractions (0.05 instead of 5)?")
-
-print("== Observations collected, by fiscal year ==")
-print(df.groupby("observation_fy")["sdvosb_prime_achievement_pct"].count().to_string())
-
-print("\n== Goal values by fiscal year (post years should show 5.0 if goals moved to the statutory level) ==")
-print(df.dropna(subset=["sdvosb_prime_goal_pct"]).groupby("observation_fy")["sdvosb_prime_goal_pct"]
-      .value_counts().to_string())
-
-base = df[df["observation_fy"].isin(PRE_BASE)].dropna(subset=["sdvosb_prime_achievement_pct"])
-n_years = base.groupby("agency_id")["observation_fy"].nunique()
-complete = n_years[n_years == len(PRE_BASE)].index
-avg = base[base["agency_id"].isin(complete)].groupby("agency_id")["sdvosb_prime_achievement_pct"].mean()
-shortfall = (NEW_GOAL - avg).clip(lower=0).rename("shortfall_pp")
-
-print(f"\n== Agencies with all FY2021-FY2023 achievement values: {len(complete)} of {df['agency_id'].nunique()} ==")
-if len(complete):
-    print(f"Below 5% (shortfall > 0): {(shortfall > 0).sum()}   At or above 5%: {(shortfall == 0).sum()}")
-    if (shortfall > 0).any():
-        print("\nShortfall among agencies below 5% (percentage points):")
-        print(shortfall[shortfall > 0].describe().round(2).to_string())
-    print("\nPer agency:")
-    print(pd.concat([avg.rename("avg_fy21_23"), shortfall], axis=1)
-          .sort_values("shortfall_pp", ascending=False).round(2).to_string())
-    if len(complete) < df["agency_id"].nunique():
-        print("\nNOTE: partial collection. These counts describe the collected agencies only, not the full panel.")
+if __name__=='__main__':
+    try: main(sys.argv[1])
+    except (DataError,ValueError,IndexError) as exc:
+        print(f'ERROR: {exc}',file=sys.stderr);sys.exit(1)
