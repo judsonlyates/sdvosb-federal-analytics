@@ -148,10 +148,11 @@ time; I will complete it before the A5 work begins.
 
 ## Assignment 5 (October 2026)
 
-This section records material AI assistance with A5. Computational checks below
-were run by the named assistants, not personally by me. Current author-review
-and submission status is recorded in `REVIEW_CHECKLIST.md`; a successful build
-does not by itself establish personal understanding or authorize a push.
+This section records material AI assistance with A5. The computational checks
+attributed to assistants below were run by them, not by me; my own execution
+and review are recorded separately under "Personal execution and review" and
+in `LOCAL_EXECUTION_EVIDENCE.md`, Section B. Current status is in
+`REVIEW_CHECKLIST.md`.
 
 ### Tools used and where
 
@@ -195,10 +196,12 @@ initial feasibility run, not blindly preregistered.
 
 The student decisions recorded in the A3 disclosure remain mine: the research
 question and hypothesis, agency-year scope, and approved exposure definition.
-AI execution is not represented as my personal execution or a completed
-source-to-database walkthrough. The assistants cannot complete my understanding
-or final adoption of the business interpretation. My review status is not
-inferred from the existence of the written summary or from a successful test.
+AI execution is not represented as my personal execution or as my
+source-to-database walkthrough; those are recorded as my own work below. The
+assistants did not perform my understanding or my adoption of the business
+interpretation. Section B of the execution record states the steps I
+reported completing; Claude formatted that record and this update at my
+direction and added nothing I did not report.
 
 ### An error I caught
 
@@ -211,19 +214,31 @@ AI audit, not by me.
 
 ### Verification ownership
 
-Automated build, test, notebook, and preservation checks are attributed to the
-assistants in `LOCAL_EXECUTION_EVIDENCE.md`; they are not claims of execution
-on my computer. Author review covers the code, notebook, charts, source-to-table
-trace, interpretation, and this disclosure. A personal execution, if completed,
-will be recorded with its actual commands and results. The current status is
-recorded in `REVIEW_CHECKLIST.md`; personal completion is recorded only after
-it actually happens.
+Automated build, test, notebook, and preservation checks performed by the
+assistants are attributed to them in `LOCAL_EXECUTION_EVIDENCE.md`, Sections
+A, C, and D; they are not claims of execution on my computer. My own execution
+is recorded in Section B of that file and summarized below.
+
+### Personal execution and review (completed October 24, 2026)
+
+After the A5 push, I personally completed the documented local workflow on my
+own computer: I synced the project dependencies, ran the full A4-to-A5 build,
+ran the test suite, ran the A4 two-run reproducibility verification, and
+opened the A5 notebook and executed its cells. I traced the NASA and DOE
+source values from the frozen SBA files through the database to the baseline
+and shortfall calculations. I reviewed the code, the executive summary, the
+notebook, and all ten figures, and I reviewed and adopted the final
+interpretation and this disclosure. I did not keep terminal logs of that run,
+so Section B records outcomes rather than logs, and none of the environment
+details or counts reported in the assistants' sections are restated as mine.
 
 ### Submission authorization
 
 After receiving the disclosure summary, technical verification, and rubric
 review, I expressly authorized the corrected A5 repository update to be
-committed and pushed. The OpenAI assistant performs that repository operation
-at my direction. This authorization is not a claim that I personally ran the
-assistant-run checks or completed any unrecorded walkthrough. Git history
-records the actual publication of this update.
+committed and pushed; the OpenAI assistant performed that repository operation
+at my direction on October 24, 2026 (commit `94cb1c2`). I then completed the
+personal execution and review above and authorized this documentation-only
+follow-up commit, which Claude prepared and pushed at my direction. It changes
+`AI_USE.md`, `LOCAL_EXECUTION_EVIDENCE.md`, and `REVIEW_CHECKLIST.md` only.
+Git history records the actual publication of both updates.

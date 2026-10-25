@@ -2,6 +2,8 @@
 
 This file records what was actually run, where, and with what result, so the review checklist and the AI-use disclosure can point to it. It is updated whenever the status changes.
 
+**Current status:** the A5 package was pushed on October 24, 2026 (commit `94cb1c2`). Sections A, C, and D are assistant-run checks that preceded the push; Section B is my own execution and review on my own computer, completed after the push. Statements in Sections C and D that no commit or push had been made describe the state at the time of those checks.
+
 ## Section A. Clean-build verification on the integrated repository (October 14, 2026)
 
 Performed by Claude in a Linux container on a checkout of the graded Assignment 4 commit `ccdc34dc` with the Assignment 5 files added. No commit or push was made; this section describes the working tree presented for the student's review.
@@ -25,19 +27,23 @@ Performed by Claude in a Linux container on a checkout of the graded Assignment 
 
 **Key A5 statistics reproduced in this run.** FY2023→FY2024 Welch p = 0.644 (24 agencies); FY2023→FY2025 Welch p = 0.520 (23 agencies, USAID FY2025 missing). These match the October 14 exploratory run recorded in `docs/ANALYSIS_PLAN.md`, Section 8.
 
-## Section B. Student verification (not yet recorded)
+## Section B. Student verification (completed October 24, 2026)
 
-The following personal actions are not recorded in this artifact. Add the actual
-date, commands, and outcomes only after completing them; assistant-run results
-must not be relabeled as student execution. A personal local run is a useful
-verification step, not a new physical-computer requirement added to the rubric.
+Performed by me, Judson L. Yates, on my own computer after the A5 push, using
+the commands documented in the root `README.md`. This section is my own
+confirmation and is kept separate from the assistant-run checks in Sections A,
+C, and D. It deliberately records outcomes only: no terminal logs, timings,
+library versions, or exact test counts are reproduced here, because I did not
+save them, and nothing in this section is copied from an assistant's run.
 
-- [ ] Ran the documented A4/A5 build on my own computer and checked row counts and results.
-- [ ] Ran the test suite and A4 two-run verifier personally.
-- [ ] Read the code, notebook, and every figure.
-- [ ] Traced NASA FY2023 and reviewed DOE FY2023's M&O caveat from original source through SQLite to shortfall.
-- [ ] Adopted or revised the executive-summary interpretation in my own judgment.
-- [ ] Reviewed and adopted the truthful A5 disclosure; updated actual personal verification status.
+- [x] Synced the project dependencies with the existing lockfile.
+- [x] Ran the full documented A4-to-A5 build (`scripts/run_portfolio.py --through a5`) successfully.
+- [x] Ran the test suite successfully.
+- [x] Ran the A4 two-run reproducibility verification (`verify_rerun`) successfully.
+- [x] Opened `notebooks/assignment05_eda.ipynb` and executed its cells.
+- [x] Traced the NASA and DOE source values from the frozen SBA files through the database tables to the FY2021–FY2023 baseline and shortfall calculations, including DOE's M&O caveat.
+- [x] Reviewed the code, the executive summary, the notebook, and all ten figures.
+- [x] Reviewed and adopted the final interpretation in `A5_EXECUTIVE_SUMMARY.md` and the A5 section of `AI_USE.md`.
 
 ## Section C. Corrected review package (October 24, 2026)
 

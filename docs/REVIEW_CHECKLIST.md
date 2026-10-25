@@ -1,10 +1,10 @@
 # Assignment 5 review and submission checklist
 
-## Technical status
+## Technical status (assistant-run checks)
 
-The pre-push corrections and assistant-run checks are complete. This is not a
-claim of personal execution by Judson or authorization to submit. See
-`LOCAL_EXECUTION_EVIDENCE.md`, Section D, for current checks; Sections A and C
+The pre-push corrections and assistant-run checks are complete. These are the
+assistants' runs, recorded separately from my own execution below. See
+`LOCAL_EXECUTION_EVIDENCE.md`, Section D, for those checks; Sections A and C
 retain the separately attributed preparation history.
 
 - [x] Locked Python 3.11 environment installed without a lockfile change.
@@ -19,30 +19,31 @@ retain the separately attributed preparation history.
 - [x] Five actual notebook code cells execute in-process with zero errors.
 - [ ] Fresh-kernel execution independently certified by the current OpenAI runner.
       Its kernel launch is blocked by runtime permissions. Claude separately
-      reported a successful fresh-kernel check on the preceding corrected copy;
-      that report is not relabeled as an OpenAI or student-computer execution.
+      reported a successful fresh-kernel check on the preceding corrected copy
+      and again on the pushed commit; those reports are not relabeled as an
+      OpenAI or student-computer execution.
 
-## Author review — record completion only when it happens
+## Author review and personal execution (completed October 24, 2026)
 
-- [ ] Read the executive summary and notebook conclusion; adopt or revise the interpretation.
-- [ ] Explain the NASA/DOE source-to-shortfall trace, 12/12 baseline split, 14 FY2023 agencies, and inconclusive intervals.
-- [ ] Review the code and figures and the accurately attributed A5 AI disclosure.
-- [ ] Personally inspect the final changed-file list; record completion only if performed.
-- [x] Separately authorize commit/push. Judson explicitly authorized this corrected A5 package after receiving the disclosure summary and rubric review.
+Completed by me on my own computer after the push, as recorded in
+`LOCAL_EXECUTION_EVIDENCE.md`, Section B. These are my own actions, not the
+assistants' runs relabeled.
 
-A personal build/test run is a useful verification step. If completed, record
-the real commands, date, environment, and results in Section B of the execution
-record. Do not turn assistant execution into a claim of a personal run. The
-included A5 rubric does not explicitly require execution on a particular
-physical computer; the full syllabus remains controlling for any additional
-course-policy requirements.
+- [x] Synced dependencies and ran the documented A4-to-A5 build, the test suite, and the A4 two-run verifier successfully.
+- [x] Opened the A5 notebook and executed its cells.
+- [x] Read the executive summary and notebook conclusion and adopted the interpretation.
+- [x] Traced the NASA and DOE source values through the database to the baseline and shortfall; can explain the 12/12 baseline split, the 14 agencies at or above 5% in FY2023, and the inconclusive intervals.
+- [x] Reviewed the code, all ten figures, and the A5 AI disclosure, and adopted the disclosure.
+- [x] Inspected the final changed-file list.
+- [x] Separately authorized the commit/push of the corrected A5 package, and this documentation-only follow-up.
 
 ## Submission
 
 The required submission is a push to the existing GitHub repository; there is
 no separate LMS upload in the included A5 specification. The deadline is Sunday,
-October 25, 11:59 PM; the specification does not state a timezone. No commit,
-push, or submission was performed during the preparation checks recorded above.
-Judson has now expressly authorized the A5 repository update. Git history is
-the authoritative publication record; this authorization does not certify
-an unrecorded personal execution or walkthrough.
+October 25, 11:59 PM; the specification does not state a timezone. The A5
+package was pushed on October 24, 2026 (commit `94cb1c2`) at my express
+authorization. This follow-up commit changes documentation only, to record the
+author review and personal execution above; no code, data, figure, result, or
+notebook file is changed by it. Git history is the authoritative publication
+record.
