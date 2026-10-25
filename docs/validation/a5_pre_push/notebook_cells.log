@@ -1,0 +1,8 @@
+{
+  "status": "pass",
+  "method": "IPython in-process",
+  "code_cells": 5,
+  "errors": 0,
+  "fresh_kernel_verified": false,
+  "python": "3.11.17"
+}

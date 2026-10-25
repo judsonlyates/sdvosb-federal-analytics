@@ -1,0 +1,14 @@
+October 24 fresh-kernel verification limit
+
+The normal nbconvert execution attempt could not launch a kernel in the
+restricted runner. It reported:
+  Operation not permitted (src/ip_resolver.cpp:542)
+  RuntimeError: Kernel died before replying to kernel_info
+
+The elevated process-launch route failed before notebook execution because
+of a read-only filesystem error in the runtime launcher.
+
+No successful fresh-kernel run is claimed. All five actual code cells then
+passed with in-process IPython under the locked Python 3.11 environment.
+The script, saved notebook metadata, and execution log identify that method.
+An independent reviewer should rerun the normal nbconvert command.

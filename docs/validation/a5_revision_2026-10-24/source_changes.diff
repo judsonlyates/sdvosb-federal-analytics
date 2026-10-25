@@ -1,0 +1,654 @@
+--- original/README.md
++++ corrected/README.md
+@@ -3,11 +3,13 @@
+ BUS 751, Python for Business Analytics · Fall 2026 · University of South Alabama
+ Author: Judson L. Yates
+ 
++**October 24 review copy:** A5 is corrected locally and has not been committed or pushed. For this review, work in the extracted ZIP rather than cloning the still-A4 remote. Start with [`CLAUDE_REVIEW_REQUEST.md`](CLAUDE_REVIEW_REQUEST.md).
++
+ ## Project and Assignment 4
+ 
+ This semester-long portfolio examines whether agencies further below the 5% SDVOSB contracting benchmark before the FY2024 goal increase subsequently showed larger increases in SBA-reported achievement. It is an associational pilot, not a causal estimate. The approved proposal remains in [`docs/proposal.md`](docs/proposal.md).
+ 
+-Assignment 5 adds the exploratory data analysis module on top of that database; see [Assignment 5](#assignment-5-exploratory-data-analysis) below. Assignment 4 implements the database and reproducible extract–transform–load pipeline. The frozen public SBA sources yield 144 agency-years (24 agencies, FY2020–FY2025), including 143 complete observations and one explicit USAID FY2025 N/A row. The A3 sample is unchanged: all 48 populated numerical cells reconcile. EDA, regression, and the dashboard remain later assignments.
++Assignment 5 adds the exploratory data analysis module on top of that database; see [Assignment 5](#assignment-5-exploratory-data-analysis) below. Assignment 4 implements the database and reproducible extract–transform–load pipeline. The frozen public SBA sources yield 144 agency-years (24 agencies, FY2020–FY2025), including 143 complete observations and one explicit USAID FY2025 N/A row. The A3 sample is unchanged: all 48 populated numerical cells reconcile. A5 implements EDA; the A6 modeling extension and A7 dashboard remain later assignments.
+ 
+ ## Setup
+ 
+@@ -92,7 +94,7 @@
+ 
+ ## Assignment 5: exploratory data analysis
+ 
+-Assignment 5 reads the graded A4 database and adds descriptive statistics, one pre-specified hypothesis test, and a static figure suite. It does not modify any A4 table. The analysis commitments are recorded in [`docs/ANALYSIS_PLAN.md`](docs/ANALYSIS_PLAN.md), which was written after the A4 feedback and before the A5 figures were produced.
++Assignment 5 reads the graded A4 database and adds descriptive statistics, one documented exploratory hypothesis test, and a static figure suite. It does not modify any A4 table. The analysis commitments are recorded in [`docs/ANALYSIS_PLAN.md`](docs/ANALYSIS_PLAN.md), which was refined after the A4 feedback and an initial feasibility run. It is not a blind preregistration.
+ 
+ ### One command: A4 database plus A5 analysis
+ 
+--- original/docs/A5_EXECUTIVE_SUMMARY.md
++++ corrected/docs/A5_EXECUTIVE_SUMMARY.md
+@@ -2,25 +2,27 @@
+ 
+ **Assignment 5, BUS 751 · Judson L. Yates · October 2026**
+ 
++**Review status:** Corrected AI-assisted draft. The student has not yet adopted the final interpretation or completed the personal walkthrough.
++
+ ## The question
+ 
+-In FY2024 the government-wide goal for contracting with service-disabled veteran-owned small businesses rose from 3% to 5%. Twelve of the 24 scored federal agencies were already at or above 5%; twelve were below it. Did the agencies that had ground to make up move more than the agencies that did not?
++In FY2024 the government-wide goal for contracting with service-disabled veteran-owned small businesses rose from 3% to 5%. Using each agency’s FY2021–FY2023 average, twelve of the 24 scored agencies had a positive shortfall from 5% and twelve had zero shortfall. These are fixed three-year-baseline groups, not FY2023 achievement categories: fourteen agencies were at or above 5% in FY2023 alone. Did the positive-shortfall group show larger subsequent increases?
+ 
+ ## What the data show
+ 
+-**No reliable difference, in either year.** Agencies below the benchmark raised their SBA-reported SDVOSB achievement by 0.4 percentage points on average from FY2023 to FY2024; agencies already at or above it moved by less than 0.1. That gap is small, and with 24 agencies it is well within what chance alone would produce (the 95% interval runs from −1.3 to +2.0 points). FY2025 looks the same: a larger average gap (+1.2 points) but an even wider interval. Neither year supports the expectation that lagging agencies responded more.
++**The mean-change comparisons are inconclusive in both years.** The baseline-positive-shortfall group raised its SBA-reported SDVOSB achievement by 0.4 percentage points on average from FY2023 to FY2024; the zero-shortfall group moved by less than 0.1. The estimated difference is +0.371 points, but its 95% interval runs from −1.302 to +2.044 points. FY2025 has a larger estimated difference (+1.155 points) and a wider interval, from −2.624 to +4.934. The comparisons do not establish larger increases in the positive-shortfall group, and they do not establish that the groups changed equally.
+ 
+-**The movement is agency by agency, not group by group.** Eight of the twelve below-benchmark agencies rose in FY2024 and four fell. The largest single gain in both years belongs to an agency that was never below the benchmark, the Small Business Administration, which went from 44% to 60%. The largest declines also belong to agencies above the benchmark (GSA, VA, OPM). By FY2025 four of the twelve lagging agencies had crossed 5% (Treasury, HUD, State, USDA); the other seven that reported remained below it, several by two to three points.
++**The movement is agency by agency, not group by group.** Eight of the twelve baseline-positive-shortfall agencies rose in FY2024 and four fell. The largest single gain in both years belongs to a zero-shortfall agency, the Small Business Administration, whose reported achievement rose from about 44% in FY2023 to about 60% in FY2025. Large declines also occur in the zero-shortfall group (GSA, VA, OPM). Four agencies in the baseline-positive-shortfall group reported at least 5% in FY2025: Treasury, HUD, State, and USDA. HUD and USDA had already exceeded 5% in FY2023. The other seven reporting agencies in that group remained below 5% in FY2025; USAID was missing.
+ 
+-**The lagging and leading groups were on different paths before the goal changed.** Agencies at or above 5% averaged about 7.6% in FY2020 and 13% by FY2023; the lagging group rose from about 1.8% to 3.2% over the same years. The gap between the groups was widening before FY2024, which is one reason a simple before-and-after comparison cannot be read as an effect of the goal.
++**The baseline groups were on different paths before the goal changed.** The zero-shortfall group averaged about 7.6% in FY2020 and 13% by FY2023; the positive-shortfall group rose from about 1.8% to 3.2% over the same years. The gap between the groups was widening before FY2024, which is one reason a simple before-and-after comparison cannot be read as an effect of the goal.
+ 
+ ## What this means
+ 
+ *For an SDVOSB deciding where to compete:* the scorecards tell you which agencies award a large share to SDVOSBs and which do not, and that is useful. They do not show that any agency changed its buying because of the new goal. Agency selection should rest on where the work is (NAICS demand, forecasted solicitations, contract vehicles) and on relationships, not on the expectation that a lagging agency will now catch up.
+ 
+-*For SBA and agency small-business offices:* a higher goal did not, on this evidence, produce a measurable shift at the agencies furthest from it. Whether the goal is too new to show an effect, or whether agency-level targets and set-aside practice matter more than the government-wide number, is the question the next assignment takes up.
++*For SBA and agency small-business offices:* these exploratory comparisons do not establish a larger increase among baseline-positive-shortfall agencies. They cannot determine whether the policy caused changes. Agency-specific targets and procurement practices are useful context to investigate, but this analysis does not measure their effects.
+ 
+-*For the research:* the association that Assignment 3 proposed to test is not visible in the raw changes. Assignment 6 estimates the pre-specified fixed-effects model with its diagnostics and sensitivity checks; the analysis plan (`docs/ANALYSIS_PLAN.md`) already states the conditions under which the project will report agency trajectories rather than an association.
++*For the research:* the A5 group comparison and the originally approved A3 continuous-exposure fixed-effects model estimate different contrasts. Assignment 6 will evaluate that original model separately. The extended diagnostics and fallback rules in `docs/ANALYSIS_PLAN.md` were refined after an initial feasibility run, not blindly preregistered.
+ 
+ ## Why the numbers are bounded
+ 
+@@ -30,4 +32,4 @@
+ 
+ ### Technical detail
+ 
+-Primary test: Welch's two-sample t-test on the FY2023→FY2024 change in achievement, positive-shortfall (n = 12) versus zero-shortfall (n = 12) agencies, chosen before results were examined. Difference +0.371 points, 95% CI [−1.302, +2.044], t = 0.47, df = 15.7, p = 0.644, Hedges' g = 0.19. Shapiro-Wilk rejected normality in the positive-shortfall group (p < 0.001); Mann-Whitney sensitivity U = 73, p = 0.977, rank-biserial 0.01. Spearman correlation between continuous shortfall and FY2024 change: ρ = −0.01 (p = 0.96). FY2025 (n = 23; USAID missing): difference +1.155, 95% CI [−2.624, +4.934], p = 0.520; Mann-Whitney p = 0.053; Spearman ρ = 0.36 (p = 0.09). Simple OLS of FY2024 change on shortfall: slope +0.014 per point (HC3 p = 0.95); adding log FY2023 SDVOSB dollars does not change the conclusion. Full tables in `results/`, figures in `figures/`, methods in `docs/A5_METHODS.md`.
++Primary test: Welch's two-sample t-test on the FY2023→FY2024 change in achievement, positive-shortfall (n = 12) versus zero-shortfall (n = 12) agencies. This exploratory test was documented after an initial feasibility run; it is not a blinded pre-analysis commitment. Difference +0.371 points, 95% CI [−1.302, +2.044], t = 0.47, df = 15.7, p = 0.644, Hedges' g = 0.19. Shapiro-Wilk rejected normality in the positive-shortfall group (p < 0.001); Mann-Whitney sensitivity U = 73, p = 0.977, rank-biserial 0.01. Spearman correlation between continuous shortfall and FY2024 change: ρ = −0.01 (p = 0.96). FY2025 (n = 23; USAID missing): difference +1.155, 95% CI [−2.624, +4.934], p = 0.520; Mann-Whitney p = 0.053; Spearman ρ = 0.36 (p = 0.09). Simple OLS of FY2024 change on shortfall: slope +0.014 per point (HC3 p = 0.95); adding log FY2023 SDVOSB dollars does not change the conclusion. Full tables in `results/`, figures in `figures/`, methods in `docs/A5_METHODS.md`.
+--- original/docs/A5_METHODS.md
++++ corrected/docs/A5_METHODS.md
+@@ -6,7 +6,7 @@
+ 
+ The unit for descriptive trajectories is an agency–fiscal year; the unit for independent cross-sectional tests is an **agency**. The authoritative A4 SQLite database `data/processed/scorecards.sqlite` preserves 24 agency identities × FY2020–FY2025, 144 rows and 143 nonmissing achievement observations (USAID FY2025 is source-declared N/A). This analysis reads A4 `panel_agency_year` joined **on agency and fiscal year** to `scorecard_observations` for reported goals and SDVOSB dollars. The frozen source snapshot is from October 11, 2026.
+ 
+-The separately built `data/processed/analysis.sqlite` adds `historical_achievement` for FY2017–FY2025 (216 rows, 215 numeric) and `vendor_counts` for FY2020–FY2025 (144 rows, 143 numeric). It excludes five GW records, checks the frozen source SHA-256 hashes, compares all overlapping historical figures after numeric normalization (384 checks), and verifies 192 vendor prior-year overlaps. It also cross-checks every FY2020–FY2025 achievement value with A4. The two supplemental tables are built twice with identical logical hashes; **the nine graded A4 tables are not changed**. Note that FY2017 appears in one annual source edition only; it has no independent overlap comparison.
++The separately built `data/processed/analysis.sqlite` adds `historical_achievement` for FY2017–FY2025 (216 rows, 215 numeric) and `vendor_counts` for FY2020–FY2025 (144 rows, 143 numeric). It excludes five GW records, checks the frozen source SHA-256 hashes, compares all overlapping historical figures after numeric normalization (384 checks), and verifies 192 vendor prior-year overlaps. It also cross-checks every FY2020–FY2025 achievement value with A4. The two supplemental tables are built twice with identical logical hashes; **the nine graded A4 tables are not changed**. Supplement reads use SQLite read-only connections, and the command rejects an output path that aliases the A4 input database. Note that FY2017 appears in one annual source edition only; it has no independent overlap comparison.
+ 
+ A firm's appearance in two agencies can contribute to both agencies' vendor counts. The vendor series is **not** a government-wide count of distinct firms. The vendor-count ratio divides SDVOSB prime contractor count by all small-business prime contractor count; it is **not** a contracting-dollar share. The denominator for SBA-reported goaling achievement is different again.
+ 
+@@ -14,9 +14,9 @@
+ 
+ `eda.describe_variables` reports data type, nonmissing/missing rows, range, quartiles, median and mean for achievement, scorecard goal, SDVOSB credited dollars, FY2021–FY2023 baseline, shortfall, SDVOSB contractor counts, count ratio and the extended history. The shortfall distribution chart shows all 24 agencies and explicitly displays the mass at zero (12 agencies). FY2020 and FY2021 HUD negative achievement values are **retained**, not screened as errors.
+ 
+-## Bivariate analysis and fixed A5 exploratory test
++## Bivariate analysis and documented A5 exploratory test
+ 
+-Define agency-level shortfall `S=max(0,5−mean(Y2021,Y2022,Y2023))` and change `Δ2024 = Y2024 − Y2023` (percentage points), with `Δ2025` separately. The science prediction is more positive change at the 12 agencies with positive shortfall compared with the 12 agencies at zero. The **primary A5 inferential check** is a two-sided Welch t-test of equal *means*, with Welch–Satterthwaite degrees of freedom and a 95% confidence interval for positive-shortfall minus zero-shortfall difference. Hedges' g describes standardized magnitude. The Mann–Whitney U statistic and rank-biserial effect are a nonparametric sensitivity, not an alternative test selected post-hoc. Shapiro–Wilk per group, Q–Q plots and influence screens assess assumptions; their p-values do not switch the primary test. A Spearman correlation relates continuous shortfall to change. FY2025 tests are secondary and use 23 agencies because USAID FY2025 is absent.
++Define agency-level shortfall `S=max(0,5−mean(Y2021,Y2022,Y2023))` and change `Δ2024 = Y2024 − Y2023` (percentage points), with `Δ2025` separately. The science prediction is more positive change at the 12 agencies with positive shortfall compared with the 12 agencies at zero. The test was documented after an initial feasibility run and is not a blinded pre-analysis commitment. The **primary A5 inferential check** is a two-sided Welch t-test of equal *means*, with Welch–Satterthwaite degrees of freedom and a 95% confidence interval for positive-shortfall minus zero-shortfall difference. Hedges' g describes standardized magnitude. The Mann–Whitney U statistic and rank-biserial effect are a nonparametric sensitivity, not an alternative test selected post-hoc. Shapiro–Wilk per group, Q–Q plots and influence screens assess assumptions; their p-values do not switch the primary test. A Spearman correlation relates continuous shortfall to change. FY2025 tests are secondary and use 23 agencies because USAID FY2025 is absent.
+ 
+ **Critical interpretive limit:** FY2023 appears *both* inside the FY2021–2023 shortfall definition and with a negative sign in the FY2023→FY2024 change. This mathematically couples the quantities, independently of policy. Regression to the mean and the FY2022 methodology change are additional reasons not to equate A5 comparisons with a policy response. Normality diagnostics show a distribution departure in the positive-shortfall FY2024 group, warranting particular caution with the small two-group sample.
+ 
+@@ -28,16 +28,15 @@
+ 
+ ## Visualization and business-facing interpretation (rubric: 25 + 20 points)
+ 
+-`eda.figures` saves ten 180-DPI PNGs: all-agency shortfall distribution, 24 small-multiple FY2017–FY2025 trajectories, shortfall-group achievement means, separately labeled FY2024 and FY2025 scatterplots, median agency contractor counts, median count ratio, Spearman heatmap, Welch Q–Q plots, and multivariate Cook's-distance diagnostics. Figures use readable titles, measured units, distinct markers/line patterns, and appropriately labeled reference lines. **A statutory goal reference line on achievement charts is not a claim that each agency had an identical negotiated target.** Count plots intentionally have no 5% line.
++`eda.figures` saves ten 180-DPI PNGs: all-agency shortfall distribution, 24 small-multiple FY2017–FY2025 trajectories, shortfall-group achievement means, separately labeled FY2024 and FY2025 scatterplots with a dedicated zero-shortfall label lane and short leaders (data points are not jittered), median agency contractor counts, median count ratio, Spearman heatmap, Welch Q–Q plots, and multivariate Cook's-distance diagnostics. Figures use readable titles, measured units, distinct markers/line patterns, and appropriately labeled reference lines. **A statutory goal reference line on achievement charts is not a claim that each agency had an identical negotiated target.** Count plots intentionally have no 5% line.
+ 
+-Use `docs/A5_EXECUTIVE_SUMMARY_DRAFT.md` as a starting point, not a student-authored final interpretation. Business implications address what SDVOSB firms and agency staff can **explore** in the scorecards; the current evidence cannot justify treating the statutory goal increase as the cause of any difference.
++Use [`A5_EXECUTIVE_SUMMARY.md`](A5_EXECUTIVE_SUMMARY.md) as the corrected AI-assisted draft for student review, not an already adopted student interpretation. Business implications address what SDVOSB firms and agency staff can **explore** in the scorecards; the current evidence cannot justify treating the statutory goal increase as the cause of any difference.
+ 
+ ## Commands from a clean checkout
+ 
+-Prerequisites: Python 3.11, UV, Poppler `pdftotext` on PATH, and network access **once** to resolve added dependencies and refresh `uv.lock`. The frozen source pipeline itself runs offline once dependencies are installed.
++Prerequisites: Python 3.11, UV, Poppler `pdftotext` on PATH, and network access **once** to install the existing locked dependencies. Preserve `uv.lock` for reproduction; do not refresh it as part of a routine rerun. The frozen source pipeline itself runs offline once dependencies are installed.
+ 
+ ```sh
+-uv lock
+ uv sync --locked
+ uv run --locked python -m sdvosb_federal_analytics.etl --offline --raw-dir data/raw/20261011T183300Z
+ uv run --locked python -m sdvosb_federal_analytics.verify_rerun
+--- original/docs/AI_USE.md
++++ corrected/docs/AI_USE.md
+@@ -144,3 +144,64 @@
+ line-by-line read of the A4 code and the local run are items on the
+ `WALKTHROUGH.md` checklist, which records what was and was not complete at push
+ time; I will complete it before the A5 work begins.
++
++
++## Assignment 5 (October 2026)
++
++**Status as of October 24:** AI-assisted disclosure draft for my review. My personal
++execution, code walkthrough, and adoption of the final business interpretation
++remain pending. No A5 commit, push, or submission is claimed.
++
++### Tools used and where
++
++- **ChatGPT / OpenAI (October 14):** Prepared exploratory calculations from the
++  frozen data, then drafted the A5 supplementary extraction, analysis module,
++  tests, notebook, figures, and methods documentation. It independently audited
++  the integrated package, including its statistics, source preservation, and
++  rubric coverage.
++- **Claude / Anthropic (October 14):** Drafted the analysis-plan addendum from
++  the A4 feedback, integrated the A5 files with the graded A4 project, refreshed
++  the dependency lockfile, completed documentation, ran the clean-build checks
++  recorded in `LOCAL_EXECUTION_EVIDENCE.md`, Section A, and drafted the
++  executive summary.
++- **OpenAI assistant (October 24):** Corrected the baseline-group and 5%
++  threshold wording, narrowed causal and analysis-timing claims, repaired plot
++  labels and the methods link, incorporated this disclosure, and performed the
++  additional checks recorded in Section C of `LOCAL_EXECUTION_EVIDENCE.md`.
++  The assistant prepared a separate corrected review copy without committing
++  or pushing it.
++
++Preliminary numerical outputs were generated and shown before approval of the
++October 14 addendum. That does not mean I personally studied those results.
++The A3 hypothesis, exposure definition, and primary fixed-effects model remain
++unchanged. The extended diagnostics and fallback rules were refined after an
++initial feasibility run, not blindly preregistered.
++
++### Where AI was deliberately not used
++
++The student decisions recorded in the A3 disclosure remain mine: the research
++question and hypothesis, agency-year scope, and approved exposure definition.
++AI execution is not being substituted for my required personal run or
++source-to-database walkthrough. AI-drafted business interpretation is still
++identified as a draft; the assistants cannot complete my understanding or
++final adoption of it. I have not authorized an A5 push.
++
++### An error I caught
++
++An AI draft incorrectly stated that I had personally reviewed the preliminary
++model results. I corrected that claim on October 14: I had not read those
++results. The corrected documentation distinguishes outputs generated by AI
++from results personally reviewed by me. The baseline-group wording errors,
++plot-label problems, and broken methods link were found by the independent
++AI audit, not by me.
++
++### Verification ownership and remaining review
++
++Automated build, test, notebook, and preservation checks are attributed to the
++assistants in `LOCAL_EXECUTION_EVIDENCE.md`; they are not claims of execution
++on my computer. Before submission I still need to run the documented build
++and two-run check myself, trace an agency-year from the SBA source through
++SQLite to shortfall, review every chart and the code, and adopt or revise the
++executive summary and this disclosure. The current status is recorded in
++`REVIEW_CHECKLIST.md`. Personal completion will be recorded only after it
++actually happens.
+--- original/docs/ANALYSIS_PLAN.md
++++ corrected/docs/ANALYSIS_PLAN.md
+@@ -2,7 +2,7 @@
+ 
+ **Project:** Agency-level SDVOSB goaling achievement around the FY2024 goal increase
+ **Author:** Judson L. Yates
+-**Prepared:** October 14, 2026. **Scope authorization:** October 14, 2026. **Status:** Integrated into the repository working tree for the author's approval; the commit date is the effective date.
++**Prepared:** October 14, 2026. **Scope authorization:** October 14, 2026; targeted A5 corrections authorized October 24, 2026. **Status:** Integrated into the repository working tree for the author's approval; the commit date is the effective date.
+ **Status of this document:** An addendum to the graded Assignment 3 proposal (`docs/proposal.md`, graded September 29, 2026), prepared after Lambert's Assignment 4 feedback. It is **not a prospective or blind preregistration**. The original A3 hypothesis and primary model predate the October 14 exploratory feasibility run. Preliminary group comparisons, model and placebo estimates were computed and displayed in the conversation **before this plan was approved**; the user's viewing the messages is not treated as proof of personally reviewing each result. The extended sensitivity list and numerical fallback conventions are subsequent analysis-plan choices, not independently precommitted findings. This local draft has no Git commit as of preparation.
+ 
+ ---
+@@ -20,9 +20,9 @@
+ **Added by this addendum:**
+ 
+ 1. A precise statement of the outcome construct (Section 2).
+-2. The Assignment 5 descriptive and exploratory analyses, including one pre-chosen hypothesis test (Section 3).
++2. The Assignment 5 descriptive and exploratory analyses, including one documented exploratory hypothesis test (Section 3).
+ 3. Two supplementary descriptive series drawn from the same frozen source files (Section 4).
+-4. The full Assignment 6 diagnostic and sensitivity set, fixed before estimation (Section 5).
++4. The extended Assignment 6 diagnostic and sensitivity set, refined after an initial feasibility run (Section 5).
+ 5. The rule for when the project reports descriptive trajectories instead of a policy-response association (Section 6).
+ 6. How the Assignment 5 results serve as the comparison specification Assignment 6 requires (Section 7).
+ 
+@@ -160,7 +160,7 @@
+ ## 8. Provenance, scope approval, and AI assistance
+ 
+ - Lambert's October 14, 2026 A4 feedback (GitHub issue #3) prompted a clearer outcome construct, differential FY2024/FY2025 interpretation, regression-to-the-mean diagnostics and influential-agency review.
+-- Claude drafted the initial plan from that feedback and the A3 proposal; ChatGPT reviewed the plan, prepared a runnable preliminary analysis, and subsequently built this local A5/A6 implementation. Claude independently reran preliminary model checks. Those activities precede the final course submissions.
++- Claude drafted the initial plan from that feedback and the A3 proposal; ChatGPT reviewed the plan, prepared a runnable preliminary analysis, and subsequently built the local A5 implementation presented here. Claude independently reran preliminary model checks. Those activities precede the final course submissions.
+ - Exploratory coefficient and comparison outputs were **generated and surfaced** on October 14 before this addendum was approved. The user clarified that seeing AI messages does not mean personally studying their statistical results. The research chronology does not assert otherwise.
+ - The user authorized the A5/A6 scope and **local implementation only** on October 14, 2026. No authorization has been given to commit, push, or submit. The final analytical interpretation and required personal walkthrough remain subject to the user's review.
+ - The initial A3 exposure, hypothesis, and TWFE specification are unchanged. The extended diagnostics and fallback conventions are **post-feasibility additions**, not claimed as blind pre-analysis commitments.
+--- original/docs/LOCAL_EXECUTION_EVIDENCE.md
++++ corrected/docs/LOCAL_EXECUTION_EVIDENCE.md
+@@ -25,13 +25,42 @@
+ 
+ **Key A5 statistics reproduced in this run.** FY2023→FY2024 Welch p = 0.644 (24 agencies); FY2023→FY2025 Welch p = 0.520 (23 agencies, USAID FY2025 missing). These match the October 14 exploratory run recorded in `docs/ANALYSIS_PLAN.md`, Section 8.
+ 
+-## Section B. Student verification (to be completed before submission)
++## Section B. Student verification (not yet recorded)
+ 
+-- [ ] Ran `uv sync --locked` and `uv run --locked python scripts/run_portfolio.py --through a5` on my own machine on ____ and obtained the same row counts and Welch p-values as Section A.
+-- [ ] Ran `uv run --locked pytest -q` on my own machine on ____: ____ passed.
+-- [ ] Opened and read `notebooks/assignment05_eda.ipynb` and every figure under `figures/`.
+-- [ ] Traced one agency-year (NASA FY2023, and DOE FY2023 for the M&O footnote) from the frozen SBA file to `scorecard_observations` to `panel_agency_year.shortfall_pp`.
+-- [ ] Rewrote the top of `docs/A5_EXECUTIVE_SUMMARY.md` in my own words.
+-- [ ] Updated `docs/AI_USE.md` for Assignment 5.
++The following personal actions remain pending. Add the actual date, commands,
++and outcomes only after completing them; assistant-run results do not satisfy
++this section.
+ 
+-Statements in Section B are made only when they are true; the disclosure must not claim a local run that has not happened.
++- [ ] Ran the documented A4/A5 build on my own computer and checked row counts and results.
++- [ ] Ran the test suite and A4 two-run verifier personally.
++- [ ] Read the code, notebook, and every figure.
++- [ ] Traced NASA FY2023 and reviewed DOE FY2023's M&O caveat from original source through SQLite to shortfall.
++- [ ] Adopted or revised the executive-summary interpretation in my own judgment.
++- [ ] Reviewed and adopted the truthful A5 disclosure; updated actual personal verification status.
++
++## Section C. Corrected review package (October 24, 2026)
++
++Performed by the OpenAI assistant in a separate cloud working copy of the
++original A5 ZIP. This is not a student-computer run. No commit or push was made.
++
++**Environment:** Python 3.11.17; pandas 3.0.5; NumPy 2.4.6; SciPy 1.17.1;
++statsmodels 0.15.0; Matplotlib 3.11.2; Seaborn 0.13.2; pytest 9.1.1.
++`uv sync --locked` succeeded without changing `pyproject.toml` or `uv.lock`.
++
++| Check | October 24 result |
++|---|---|
++| Full offline `scripts/run_portfolio.py --through a5` | Passed: 144 A4 agency-years, 143 numeric achievements; 216 history and 144 vendor rows; ten figures and six result files |
++| Final `pytest -q` | 58 passed, 5 subtests passed, including eight added regression cases |
++| Frozen sources | All 55 hash/byte-size checks passed; source bytes unchanged |
++| A4 logical data | All nine tables match archived A4 row counts and logical hashes |
++| A5 preservation | A4 database physical hash unchanged before/after supplement and EDA |
++| Numerical results | All six result files byte-identical to original ZIP |
++| Plot review | All ten PNGs viewed; 24/23 scatter labels checked for geometry and unchanged point coordinates |
++| Fresh-kernel `nbconvert --execute` | Not verified: local kernel sockets blocked; elevated launch also failed before execution |
++| In-process notebook execution | All five actual code cells passed in order under IPython/Python 3.11.17; rich outputs saved and method labeled in notebook metadata |
++
++The normal notebook command still needs an independent fresh-kernel check.
++The included fallback runner does not claim to be that check. A4 core source,
++schema, original tests, sample, proposal, and dependency lock are unchanged.
++Supplement read-only/path guards, chart layout, documentation, and regression
++tests are the targeted edits. Evidence is in `validation/a5_revision_2026-10-24/`.
+--- original/docs/REVIEW_CHECKLIST.md
++++ corrected/docs/REVIEW_CHECKLIST.md
+@@ -1,29 +1,40 @@
+ # Assignment 5 review checklist
+ 
+-Checked items describe the integrated working tree as verified in `docs/LOCAL_EXECUTION_EVIDENCE.md`, Section A. Unchecked items are the student's own, and are marked only when done.
++Current status: corrected review copy, October 24, 2026. No commit or push.
++Technical checks below were performed by the assistant, not the student.
++See `LOCAL_EXECUTION_EVIDENCE.md`, Section C, for current evidence. Section A
++retains the separately attributed October 14 history.
+ 
+ ## Build and preservation
+ 
+-- [x] A5 module (`eda.py`, `supplement.py`) importable, documented, with no notebook-only computation
+-- [x] A4 database joined to the approved agency-year panel without altering the nine graded tables (hash verified before and after the A5 stages)
+-- [x] Supplementary history (FY2017–FY2025) and contractor counts (FY2020–FY2025) built into a separate `analysis.sqlite`; USAID FY2025 kept missing; five `GW` rows excluded
+-- [x] `uv.lock` refreshed on Python 3.11; `uv sync --locked` succeeds
+-- [x] Full build from a wiped output directory with `scripts/run_portfolio.py --through a5`
+-- [x] A4 two-run verifier passes after the A5 build
+-- [x] `uv run --locked pytest -q`: 50 passed, 5 subtests
+-- [x] Notebook executes top to bottom and imports the module rather than duplicating it
++- [x] Existing Python 3.11 lock installed without changes.
++- [x] Offline A4→A5 build passed; 55 frozen source hashes verified.
++- [x] All nine A4 tables match archived logical hashes and counts.
++- [x] A4 database unchanged by A5 stages; supplement uses separate database and guarded destinations.
++- [x] Final suite: 58 passed, 5 subtests passed.
++- [x] All six A5 numerical result files unchanged from the original package.
++- [x] All five notebook cells passed in-process with current outputs saved.
++- [ ] Independently execute notebook with a normal fresh Jupyter kernel. The current runner could not launch one.
+ 
+-## Rubric coverage (A5 specification)
++## Rubric and audit corrections
+ 
+-- [x] Statistical analysis: univariate, bivariate, multivariate; one pre-specified Welch test with assumptions checked and interpreted; Mann–Whitney sensitivity; Spearman; simple and multivariable HC3 OLS
+-- [x] Visualization: ten labeled static figures with footers, distinct line patterns, applicable goal line on achievement charts only
+-- [x] Code architecture: reusable functions with docstrings in `src/`; notebook imports them
+-- [ ] Business insights: executive summary rewritten in the student's own words (`docs/A5_EXECUTIVE_SUMMARY.md`)
++- [x] Univariate, bivariate, and multivariate analyses; documented exploratory Welch comparison, assumptions, sensitivity, HC3 models, and influence checks.
++- [x] Ten labeled static figures visually inspected; scatter labels separated without moving points.
++- [x] Reusable importable functions and docstrings; notebook imports the module.
++- [x] Baseline/threshold facts corrected and causal/model claims bounded.
++- [x] Methods link and post-feasibility chronology corrected.
++- [x] A5 disclosure incorporated, with accurate attribution and no invented personal verification.
++- [x] October 14 audit findings addressed technically; independent static correction review completed.
++- [ ] Student owns the final business interpretation after reading/adopting or revising the summary.
+ 
+-## Student
++## Student review and submission boundary
+ 
+-- [ ] Local run of the documented commands (record in `LOCAL_EXECUTION_EVIDENCE.md`, Section B)
+-- [ ] Personal walkthrough: NASA FY2023 and DOE FY2023 traced from source to `shortfall_pp`
+-- [ ] `docs/AI_USE.md` Assignment 5 section written
+-- [ ] Independent rubric audit received and findings resolved
+-- [ ] Final diff approved; commit and push before October 25
++- [ ] Personally run the documented build, test suite, and A4 two-run check.
++- [ ] Trace an agency-year from SBA source to SQLite and derived shortfall; explain source caveats.
++- [ ] Read code, notebook, and every figure.
++- [ ] Review/adopt the executive summary and A5 disclosure and update true completion status.
++- [ ] Review Claude's independent findings and the final diff.
++- [ ] Separately authorize any commit/push. Current instruction: do not push.
++
++Submission is a push to the existing GitHub repository, not an LMS upload.
++The assignment lists Sunday, October 25, 11:59 PM without a timezone.
+--- original/scripts/run_portfolio.py
++++ corrected/scripts/run_portfolio.py
+@@ -1,10 +1,9 @@
+-"""Reproduce A4 inputs and A5 (or A5+A6) from frozen, audited sources.
++"""Reproduce A4 inputs and A5 from frozen, audited sources.
+ 
+ Usage from project root:
+     python scripts/run_portfolio.py --through a5
+-    python scripts/run_portfolio.py --through a6
+ 
+-Use the locked Python environment once dependency lockfile is refreshed.
++Use the existing locked Python environment; do not refresh the lockfile for a rerun.
+ """
+ from __future__ import annotations
+ 
+@@ -17,20 +16,21 @@
+ 
+ 
+ def command(*args:str)->None:
++    """Run one fixed pipeline stage with the current Python interpreter."""
+     line=[sys.executable,*args]
+     print('>', ' '.join(line),flush=True)
+     subprocess.run(line,cwd=ROOT,check=True)
+ 
+ 
+ def main():
++    """Build the supported A5 package from the frozen A4 source snapshot."""
+     p=argparse.ArgumentParser(description=__doc__)
+-    p.add_argument('--through',choices=('a5','a6'),default='a5')
++    p.add_argument('--through',choices=('a5',),default='a5')
+     a=p.parse_args()
+     command('-m','sdvosb_federal_analytics.etl','--offline','--raw-dir','data/raw/20261011T183300Z')
+     command('-m','sdvosb_federal_analytics.verify_rerun')
+     command('-m','sdvosb_federal_analytics.supplement')
+     command('-m','sdvosb_federal_analytics.eda')
+-    if a.through=='a6':command('-m','sdvosb_federal_analytics.modeling')
+     print('Successfully built through',a.through.upper())
+ 
+ 
+--- original/src/sdvosb_federal_analytics/eda.py
++++ corrected/src/sdvosb_federal_analytics/eda.py
+@@ -164,6 +164,94 @@
+     return changes[fields].corr(method='spearman',min_periods=10)
+ 
+ 
++def _spread_label_y(values: np.ndarray, lower: float, upper: float, gap: float) -> np.ndarray:
++    """Separate sorted label positions with bounded, minimum-gap isotonic placement."""
++    values=np.asarray(values,dtype=float)
++    if len(values)==0:
++        return values.copy()
++    if np.any(np.diff(values)<0) or gap<0 or (len(values)-1)*gap>upper-lower:
++        raise ValueError('Label values must be sorted and fit the available bounds')
++    # Pool adjacent violating blocks after subtracting the required linear gap.
++    blocks=[]
++    for i,value in enumerate(values-np.arange(len(values))*gap):
++        blocks.append([float(value),1])
++        while len(blocks)>1 and blocks[-2][0]>blocks[-1][0]:
++            right=blocks.pop();left=blocks.pop()
++            count=left[1]+right[1]
++            blocks.append([(left[0]*left[1]+right[0]*right[1])/count,count])
++    fitted=np.concatenate([np.repeat(value,count) for value,count in blocks])
++    fitted=np.clip(fitted,lower,upper-(len(values)-1)*gap)
++    return fitted+np.arange(len(values))*gap
++
++
++def change_scatter(changes: pd.DataFrame, year: int):
++    """Plot one year's unchanged agency points with deterministic, nonoverlapping labels.
++
++    Zero-shortfall labels occupy a separated left-hand lane. Other labels use
++    checked screen-space offsets and short leaders; no data point is jittered.
++    Raises an explicit error rather than silently exporting overlapping labels.
++    """
++    if year not in (2024,2025):
++        raise ValueError('A5 change scatter supports FY2024 or FY2025')
++    g=changes.dropna(subset=[f'delta_{year}']).sort_values('agency_id').copy()
++    g['exposure_group']=np.where(g.shortfall_pp>0,'Positive shortfall','Zero shortfall')
++    fig,ax=plt.subplots(figsize=(11.5,7.5))
++    sns.scatterplot(data=g,x='shortfall_pp',y=f'delta_{year}',hue='exposure_group',
++                    style='exposure_group',hue_order=['Positive shortfall','Zero shortfall'],
++                    style_order=['Positive shortfall','Zero shortfall'],s=85,ax=ax)
++    y=g[f'delta_{year}'];span=float(y.max()-y.min())
++    ax.set_xlim(-.85,float(g.shortfall_pp.max())+.65)
++    ax.set_ylim(float(y.min())-.12*span,float(y.max())+.16*span)
++    ax.axhline(0,color='.3',linestyle=':',lw=1)
++    ax.set(xlabel='Baseline shortfall FY2021–FY2023 (percentage points)',
++           ylabel=f'Change FY2023 to FY{year} (percentage points)',
++           title=f'Agency shortfall versus FY{year} achievement change')
++    ax.legend(fontsize=9,title='FY2021–FY2023 baseline group',loc='upper right')
++    fig.subplots_adjust(bottom=.19)
++    fig.canvas.draw()
++    renderer=fig.canvas.get_renderer()
++    bounds=ax.get_window_extent(renderer)
++    point_boxes=[]
++    from matplotlib.transforms import Bbox
++    for row in g.itertuples(index=False):
++        px,py=ax.transData.transform((row.shortfall_pp,getattr(row,f'delta_{year}')))
++        point_boxes.append(Bbox.from_extents(px-7,py-7,px+7,py+7))
++    occupied=[ax.get_legend().get_window_extent(renderer).expanded(1.03,1.08)]
++    zero=g[g.shortfall_pp==0].sort_values([f'delta_{year}','agency_id'])
++    zero_pixels=ax.transData.transform(np.column_stack([np.zeros(len(zero)),zero[f'delta_{year}']]))[:,1]
++    separated=_spread_label_y(zero_pixels,bounds.y0+15,bounds.y1-15,17)
++    for row,py in zip(zero.itertuples(index=False),separated):
++        label_y=ax.transData.inverted().transform((bounds.x0,py))[1]
++        text=ax.annotate(row.agency_id,(0,getattr(row,f'delta_{year}')),
++                         xytext=(-.22,label_y),textcoords='data',ha='right',va='center',fontsize=8,
++                         bbox=dict(facecolor='white',edgecolor='none',pad=.2),
++                         arrowprops=dict(arrowstyle='-',color='.45',lw=.65,shrinkA=2,shrinkB=5))
++    # Exclude leaders from occupied text bounds: they may cross open plot space.
++    fig.canvas.draw();renderer=fig.canvas.get_renderer()
++    occupied=[ax.get_legend().get_window_extent(renderer).expanded(1.03,1.08)]
++    occupied.extend(t.get_bbox_patch().get_window_extent(renderer).expanded(1.1,1.25) for t in ax.texts)
++    candidates=[(dx,dy) for dy in (10,-12,24,-26,38,-40,52,-54,66,-68)
++                         for dx in (8,-8,20,-20)]
++    for row in g[g.shortfall_pp>0].sort_values([f'delta_{year}','agency_id']).itertuples(index=False):
++        for dx,dy in candidates:
++            text=ax.annotate(row.agency_id,(row.shortfall_pp,getattr(row,f'delta_{year}')),
++                             xytext=(dx,dy),textcoords='offset points',
++                             ha='left' if dx>0 else 'right',va='center',fontsize=8,
++                             bbox=dict(facecolor='white',edgecolor='none',pad=.2),
++                             arrowprops=dict(arrowstyle='-',color='.45',lw=.65,shrinkA=2,shrinkB=5))
++            text.update_positions(renderer);text.update_bbox_position_size(renderer)
++            box=text.get_bbox_patch().get_window_extent(renderer).expanded(1.1,1.25)
++            fits=box.x0>=bounds.x0 and box.x1<=bounds.x1 and box.y0>=bounds.y0 and box.y1<=bounds.y1
++            if fits and not any(box.overlaps(other) for other in occupied+point_boxes):
++                occupied.append(box)
++                break
++            text.remove()
++        else:
++            plt.close(fig)
++            raise ValueError(f'Could not place {row.agency_id} label without overlap for FY{year}')
++    return fig,ax
++
++
+ def figures(panel:pd.DataFrame,history:pd.DataFrame,changes:pd.DataFrame,
+             correlations:pd.DataFrame,influence:pd.DataFrame,dest:Path) -> list[str]:
+     """Save static publication-oriented EDA PNG figures with consistent style."""
+@@ -212,7 +300,7 @@
+     fig,ax=plt.subplots(figsize=(9,5))
+     for y,label,c,style in [('below_mean','Positive shortfall',palette[0],'-'),('at_or_above_mean','Zero shortfall',palette[1],'--')]:
+         ax.plot(p.fiscal_year,p[y],marker='o',color=c,linestyle=style,label=label)
+-    ax.plot([2020,2023,2024,2025],[3,3,5,5],linestyle=':',color='k',alpha=.5,label='Government-wide benchmark (reference)')
++    ax.step([2020,2024,2025],[3,5,5],where='post',linestyle=':',color='k',alpha=.5,label='Government-wide benchmark (reference)')
+     ax.axvline(2024,color='.5',linestyle=':',lw=1)
+     ax.set(xlabel='Fiscal year',ylabel='Mean achievement (%)',title='Mean SBA-reported achievement by baseline shortfall group')
+     ax.legend(loc='best',fontsize=9)
+@@ -221,17 +309,7 @@
+     # Plot 4/5: the two years shown separately, each agency labeled.
+     for year in (2024,2025):
+         g=changes.dropna(subset=[f'delta_{year}'])
+-        fig,ax=plt.subplots(figsize=(10,6))
+-        sns.scatterplot(data=g,x='shortfall_pp',y=f'delta_{year}',hue='shortfall_group',
+-                        style='shortfall_group',s=85,ax=ax)
+-        for i,r in enumerate(g.itertuples(index=False)):
+-            ax.annotate(r.agency_id,(r.shortfall_pp,getattr(r,f'delta_{year}')),
+-                        xytext=(4,4 if i%2 else -9),textcoords='offset points',fontsize=7)
+-        ax.axhline(0,color='.3',linestyle=':',lw=1)
+-        ax.set(xlabel='Baseline shortfall FY2021–FY2023 (percentage points)',
+-               ylabel=f'Change FY2023 to FY{year} (percentage points)',
+-               title=f'Agency shortfall versus FY{year} achievement change')
+-        ax.legend(fontsize=9,title='Exposure group')
++        fig,ax=change_scatter(changes,year)
+         save(fig,f'a5_0{4 if year==2024 else 5}_shortfall_vs_change_{year}.png',
+              f'FY2023 shares a term with the exposure definition; this chart is exploratory. n={len(g)} agencies.')
+ 
+@@ -239,16 +317,22 @@
+     v=panel.groupby(['observation_fy',panel.shortfall_pp.gt(0)])['sdvosb_prime_contractor_count'].median().reset_index(name='median_contractors')
+     v['group']=np.where(v.shortfall_pp,'Positive shortfall','Zero shortfall')
+     fig,ax=plt.subplots(figsize=(9,5))
+-    sns.lineplot(data=v,x='observation_fy',y='median_contractors',hue='group',style='group',markers=True,dashes=True,ax=ax)
+-    ax.set(xlabel='Fiscal year',ylabel='Median agency SDVOSB prime contractor count',title='Contractor breadth, descriptive secondary outcome')
++    sns.lineplot(data=v,x='observation_fy',y='median_contractors',hue='group',style='group',
++                 hue_order=['Positive shortfall','Zero shortfall'],
++                 style_order=['Positive shortfall','Zero shortfall'],markers=True,dashes=True,ax=ax)
++    ax.legend(title='FY2021–FY2023 baseline group',fontsize=9)
++    ax.set(xlabel='Fiscal year',ylabel='Median agency count\n(SDVOSB prime contractors)',title='Contractor breadth, descriptive secondary outcome')
+     save(fig,'a5_06_vendor_counts.png','Agency medians, not a cross-agency distinct contractor total. FY2020–FY2025; USAID FY2025 is missing.')
+ 
+     # Plot 7: ratio uses a different denominator from achievement.
+     v=panel.groupby(['observation_fy',panel.shortfall_pp.gt(0)])['sdvosb_to_small_business_ratio'].median().reset_index(name='median_ratio')
+     v['group']=np.where(v.shortfall_pp,'Positive shortfall','Zero shortfall')
+     fig,ax=plt.subplots(figsize=(9,5))
+-    sns.lineplot(data=v,x='observation_fy',y='median_ratio',hue='group',style='group',markers=True,dashes=True,ax=ax)
+-    ax.set(xlabel='Fiscal year',ylabel='Median SDVOSB/all-small-business contractor ratio',title='SDVOSB share of small-business prime contractor counts')
++    sns.lineplot(data=v,x='observation_fy',y='median_ratio',hue='group',style='group',
++                 hue_order=['Positive shortfall','Zero shortfall'],
++                 style_order=['Positive shortfall','Zero shortfall'],markers=True,dashes=True,ax=ax)
++    ax.legend(title='FY2021–FY2023 baseline group',fontsize=9)
++    ax.set(xlabel='Fiscal year',ylabel='Median contractor-count ratio\n(SDVOSB / all small business)',title='SDVOSB share of small-business prime contractor counts')
+     save(fig,'a5_07_vendor_ratio.png','Count ratio, not a contracting dollar share; agency medians FY2020–FY2025.')
+ 
+     # Plot 8: selected pairwise Spearman correlations.
+--- original/src/sdvosb_federal_analytics/supplement.py
++++ corrected/src/sdvosb_federal_analytics/supplement.py
+@@ -61,7 +61,7 @@
+     not hold the approved 24-agency, 144-row panel, so the supplement is always
+     keyed to the same agency set Lambert graded.
+     """
+-    with sqlite3.connect(a4_db) as db:
++    with sqlite3.connect(f'file:{a4_db.resolve()}?mode=ro',uri=True) as db:
+         agencies = {r[0] for r in db.execute('SELECT agency_id FROM agencies')}
+         count = db.execute('SELECT COUNT(*) FROM scorecard_observations').fetchone()[0]
+         if db.execute('PRAGMA integrity_check').fetchone()[0] != 'ok':
+@@ -154,7 +154,7 @@
+                     raise ValueError(f'Historical vendor count mismatch: {ident} FY{edition-1} {field}')
+                 vendor_checks+=1
+     # Numerical parity for all years already present in approved A4 database.
+-    with sqlite3.connect(a4_db) as db:
++    with sqlite3.connect(f'file:{a4_db.resolve()}?mode=ro',uri=True) as db:
+         current_y={(a,y):value for a,y,value in db.execute(
+             'SELECT agency_id,observation_fy,sdvosb_prime_achievement_pct FROM scorecard_observations')}
+     for r in hist:
+@@ -231,6 +231,12 @@
+     ap.add_argument('--a4-db',type=Path,default=ROOT/'data/processed/scorecards.sqlite')
+     ap.add_argument('--output',type=Path,default=ROOT/'data/processed/analysis.sqlite')
+     args=ap.parse_args(argv)
++    report_path=args.output.parent/'a5_supplement_validation.json'
++    paths=(args.a4_db,args.output,report_path)
++    for i,left in enumerate(paths):
++        for right in paths[i+1:]:
++            if left.resolve()==right.resolve() or (left.exists() and right.exists() and left.samefile(right)):
++                raise ValueError('A4 input, supplement output, and validation report must differ')
+     hist, vendors, report=extract(args.raw_dir,args.a4_db)
+     outputs=[]
+     for i in range(2):
+@@ -239,7 +245,7 @@
+     report.update(two_run_identical=outputs[0]==outputs[1],logical_table_hashes=outputs[0])
+     if not report['two_run_identical']:
+         raise RuntimeError('Analysis supplement rerun mismatch')
+-    (args.output.parent/'a5_supplement_validation.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
++    report_path.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+     print(json.dumps({k:v for k,v in report.items() if k!='source_sha256s'},indent=2))
+     return 0
+ 
+--- original/tests/test_eda.py
++++ corrected/tests/test_eda.py
+@@ -97,3 +97,92 @@
+ def test_exposure_constant_within_agency(derived):
+     _,_,panel,_,_,_=derived
+     assert panel.groupby('agency_id').shortfall_pp.nunique().eq(1).all()
++
++
++def test_baseline_groups_are_not_fy2023_threshold_groups(derived):
++    """Protect the distinction behind the corrected executive-summary wording."""
++    _,_,panel,_,_,_=derived
++    changes=agency_changes(panel)
++    assert (changes.shortfall_pp>0).sum()==12
++    fy2023=panel.query('observation_fy == 2023')
++    assert (fy2023.achievement_pct>=5).sum()==14
++    for agency in ('HUD','USDA'):
++        r=fy2023.set_index('agency_id').loc[agency]
++        assert r.shortfall_pp>0 and r.achievement_pct>5
++    fy2025=panel.query('observation_fy == 2025 and shortfall_pp > 0 and achievement_pct >= 5')
++    assert set(fy2025.agency_id)=={'DOS','HUD','TREAS','USDA'}
++
++
++def test_label_spreading_is_bounded_and_deterministic():
++    """Identical and tightly clustered labels separate without moving markers."""
++    from sdvosb_federal_analytics.eda import _spread_label_y
++    values=np.array([.2,.2,.21,.5,.8])
++    a=_spread_label_y(values,0,1,.12)
++    assert np.all(np.diff(a)>=.12-1e-12)
++    assert a[0]>=0 and a[-1]<=1
++    np.testing.assert_array_equal(a,_spread_label_y(values,0,1,.12))
++    with pytest.raises(ValueError):_spread_label_y(values,0,1,.3)
++
++
++@pytest.mark.parametrize('year,n_agencies',[(2024,24),(2025,23)])
++def test_change_scatter_all_labels_legible_and_markers_unchanged(derived,year,n_agencies):
++    """Inspect actual rendered text extents, not just successful PNG writing."""
++    import matplotlib.pyplot as plt
++    from sdvosb_federal_analytics.eda import change_scatter
++    _,_,panel,_,_,_=derived
++    changes=agency_changes(panel)
++    fig,ax=change_scatter(changes,year)
++    try:
++        fig.canvas.draw();renderer=fig.canvas.get_renderer()
++        expected=changes.dropna(subset=[f'delta_{year}'])
++        assert len(ax.texts)==n_agencies
++        assert {t.get_text() for t in ax.texts}==set(expected.agency_id)
++        boxes=[t.get_bbox_patch().get_window_extent(renderer) for t in ax.texts]
++        assert all(not a.overlaps(b) for i,a in enumerate(boxes) for b in boxes[i+1:])
++        bounds=ax.get_window_extent(renderer)
++        assert all(b.x0>=bounds.x0 and b.x1<=bounds.x1 and b.y0>=bounds.y0 and b.y1<=bounds.y1 for b in boxes)
++        plotted=ax.collections[0].get_offsets()
++        actual=sorted(tuple(map(float,p)) for p in plotted)
++        wanted=sorted(zip(expected.shortfall_pp,expected[f'delta_{year}']))
++        np.testing.assert_allclose(actual,wanted,rtol=0,atol=1e-12)
++        assert 'FY2021–FY2023' in ax.get_legend().get_title().get_text()
++    finally:
++        plt.close(fig)
++
++
++def test_supplement_missing_a4_does_not_create_database(tmp_path):
++    """Read-only A4 access fails without creating a misleading empty file."""
++    import sqlite3
++    missing=tmp_path/'missing.sqlite'
++    with pytest.raises(sqlite3.OperationalError):extract(RAW,missing)
++    assert not missing.exists()
++
++
++def test_supplement_cannot_overwrite_a4(derived):
++    """An explicit CLI output/input collision is rejected before any write."""
++    from sdvosb_federal_analytics.supplement import main
++    before=A4.read_bytes()
++    with pytest.raises(ValueError,match='must differ'):
++        main(['--a4-db',str(A4),'--output',str(A4)])
++    assert A4.read_bytes()==before
++
++
++def test_supplement_report_cannot_alias_a4(tmp_path):
++    """A symlinked report must not bypass source/output protection."""
++    from sdvosb_federal_analytics.supplement import main
++    source=tmp_path/'source.sqlite';source.write_bytes(b'unchanged source')
++    (tmp_path/'a5_supplement_validation.json').symlink_to(source)
++    with pytest.raises(ValueError,match='must differ'):
++        main(['--a4-db',str(source),'--output',str(tmp_path/'analysis.sqlite')])
++    assert source.read_bytes()==b'unchanged source'
++    assert not (tmp_path/'analysis.sqlite').exists()
++
++
++def test_supplement_output_cannot_equal_report(tmp_path):
++    """Reject a database filename that would be replaced by the JSON report."""
++    from sdvosb_federal_analytics.supplement import main
++    source=tmp_path/'source.sqlite';source.write_bytes(b'unchanged source')
++    output=tmp_path/'a5_supplement_validation.json'
++    with pytest.raises(ValueError,match='must differ'):
++        main(['--a4-db',str(source),'--output',str(output)])
++    assert not output.exists()

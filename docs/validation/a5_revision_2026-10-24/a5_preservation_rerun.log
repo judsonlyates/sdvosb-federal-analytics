@@ -1,0 +1,26 @@
+{
+  "historical_rows": 216,
+  "historical_numeric_count": 215,
+  "vendor_rows": 144,
+  "vendor_numeric_count": 143,
+  "historical_overlap_checks": 384,
+  "vendor_overlap_checks": 192,
+  "excluded_gw_rows": 5,
+  "two_run_identical": true,
+  "logical_table_hashes": {
+    "historical_achievement": {
+      "rows": 216,
+      "sha256": "ec8b7fb4e78b3a2cd7c7b8d9b6f06a6187793fd4120c565979fe7871ea6d5549"
+    },
+    "vendor_counts": {
+      "rows": 144,
+      "sha256": "3693e54af26cabd236f05e8d796736bb5bb33ba0d71f67aeae45a683de6b3abc"
+    }
+  }
+}
+{
+  "agency_years": 144,
+  "n_figures": 10,
+  "welch_2024": 0.6443156291395863,
+  "welch_2025": 0.5204370281551339
+}

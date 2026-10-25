@@ -1,0 +1,116 @@
+{
+  "status": "pass",
+  "baseline_positive_zero": [
+    12,
+    12
+  ],
+  "fy2023_at_least_five": 14,
+  "independent_statistics": {
+    "2024": {
+      "n_total": 24.0,
+      "n_positive": 12.0,
+      "n_zero": 12.0,
+      "mean_positive": 0.41499999999999987,
+      "mean_zero": 0.044166666666666764,
+      "difference": 0.3708333333333331,
+      "standard_error": 0.7877566521009475,
+      "welch_df": 15.651844139688826,
+      "welch_t": 0.4707460512638268,
+      "welch_p_two_sided": 0.6443156291395863,
+      "ci_low": -1.3021602490545974,
+      "ci_high": 2.0438269157212634,
+      "hedges_g": 0.18555433030310334,
+      "shapiro_positive_p": 0.0006085948706355003,
+      "shapiro_zero_p": 0.545765625158698,
+      "mann_whitney_u": 73.0,
+      "mann_whitney_p": 0.9769702553219757,
+      "rank_biserial": 0.01388888888888884,
+      "spearman_rho": -0.00975720980684986,
+      "spearman_p": 0.9639084304482624
+    },
+    "2025": {
+      "n_total": 23.0,
+      "n_positive": 11.0,
+      "n_zero": 12.0,
+      "mean_positive": 0.8599999999999998,
+      "mean_zero": -0.29499999999999965,
+      "difference": 1.1549999999999994,
+      "standard_error": 1.7482576174493558,
+      "welch_df": 12.921201367347871,
+      "welch_t": 0.6606577820522254,
+      "welch_p_two_sided": 0.5204370281551339,
+      "ci_low": -2.624223663280518,
+      "ci_high": 4.934223663280516,
+      "hedges_g": 0.25572480010869864,
+      "shapiro_positive_p": 0.0003327806359502763,
+      "shapiro_zero_p": 0.0012444271574193198,
+      "mann_whitney_u": 98.0,
+      "mann_whitney_p": 0.05253897729199802,
+      "rank_biserial": 0.48484848484848486,
+      "spearman_rho": 0.36042636825186997,
+      "spearman_p": 0.09112774666511952
+    }
+  },
+  "raw_trace_examples": {
+    "NASA": {
+      "raw_2021_2023": [
+        1.59,
+        1.46,
+        2.34
+      ],
+      "baseline_mean": 1.7966666666666666,
+      "shortfall": 3.203333333333333
+    },
+    "DOE": {
+      "raw_2021_2023": [
+        1.69,
+        1.99,
+        2.42
+      ],
+      "baseline_mean": 2.033333333333333,
+      "shortfall": 2.966666666666667
+    }
+  },
+  "hc3_design_matrix_recomputation": "all saved coefficient/SE/p/CI entries agree",
+  "unchanged_result_files": [
+    "results/a5_agency_changes.csv",
+    "results/a5_correlations.csv",
+    "results/a5_descriptive_summary.csv",
+    "results/a5_influence.csv",
+    "results/a5_regression_estimates.csv",
+    "results/a5_results.json"
+  ],
+  "unchanged_figure_files": [
+    "figures/a5_01_shortfall_distribution.png",
+    "figures/a5_02_historical_agency_trajectories.png",
+    "figures/a5_03_group_trends.png",
+    "figures/a5_04_shortfall_vs_change_2024.png",
+    "figures/a5_06_vendor_counts.png",
+    "figures/a5_07_vendor_ratio.png",
+    "figures/a5_08_spearman_correlations.png",
+    "figures/a5_09_qq_welch_assumptions.png",
+    "figures/a5_10_multivariable_influence.png"
+  ],
+  "changed_relative_to_review_zip": [
+    "README.md",
+    "docs/A5_CORRECTION_REPORT.md",
+    "docs/A5_EXECUTIVE_SUMMARY.md",
+    "docs/A5_METHODS.md",
+    "docs/AI_USE.md",
+    "docs/ANALYSIS_PLAN.md",
+    "docs/REVIEW_CHECKLIST.md",
+    "figures/a5_05_shortfall_vs_change_2025.png",
+    "notebooks/assignment05_eda.ipynb",
+    "src/sdvosb_federal_analytics/eda.py",
+    "tests/conftest.py",
+    "tests/test_eda.py"
+  ],
+  "omitted_review_scaffolding": [
+    "CLAUDE_REVIEW_REQUEST.md",
+    "docs/validation/a5_revision_2026-10-24/reference/A5_Independent_Audit_2026-10-14.md",
+    "REVIEW_PACKAGE_SHA256.json"
+  ],
+  "a4_core_source_tests_lock_and_a2_a4_disclosure_preserved": true,
+  "active_broken_links": [],
+  "a5_reusable_functions_missing_docstrings": []
+}

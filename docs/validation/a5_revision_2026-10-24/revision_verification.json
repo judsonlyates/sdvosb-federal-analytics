@@ -1,0 +1,164 @@
+{
+  "date": "2026-10-24",
+  "python": "3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]",
+  "original_zip_sha256": "60d4dd2c00de0393bf83cba8b50249b5847ce200701179e42c70d2775cdab99f",
+  "original_unchanged": true,
+  "a4_core_and_dependencies_unchanged": [
+    "src/sdvosb_federal_analytics/etl.py",
+    "src/sdvosb_federal_analytics/panel.py",
+    "src/sdvosb_federal_analytics/verify_rerun.py",
+    "src/sdvosb_federal_analytics/schema.sql",
+    "src/sdvosb_federal_analytics/__init__.py",
+    "tests/test_collector.py",
+    "tests/test_pipeline.py",
+    "tests/test_smoke.py",
+    "docs/proposal.md",
+    "docs/ERD.md",
+    "docs/DATA_DICTIONARY.md",
+    "docs/PIPELINE.md",
+    "docs/DATA_QUALITY.md",
+    "docs/VALIDATION.md",
+    "docs/WALKTHROUGH.md",
+    "data/sample/sba_scorecard_sdvosb.csv",
+    "data/reference/fy2020_sources.json",
+    "pyproject.toml",
+    "uv.lock"
+  ],
+  "frozen_sources_verified": 55,
+  "a4_physical_sha256_before": "0698caf6e9b37680d4f8cc9802a398f862d657a592cbff5c136b66a1b204c959",
+  "a4_physical_sha256_after": "0698caf6e9b37680d4f8cc9802a398f862d657a592cbff5c136b66a1b204c959",
+  "a4_tables_match_archived_evidence": {
+    "agencies": {
+      "row_count": 24,
+      "logical_sha256": "5470d42cb8a5dee110d1e51e92f8f5c7160a8fee406ad941f37cbe9a6507f9e3"
+    },
+    "agency_names": {
+      "row_count": 144,
+      "logical_sha256": "0e1b849ee41738c249e99b98b5a0ff9913f65ea9b3acbb77eee8ad67fea4fc96"
+    },
+    "overlap_checks": {
+      "row_count": 336,
+      "logical_sha256": "a2d95685e66d511605bcc7cf89312d31ec9395edc7cc77f63f6bd43887bcd2f2"
+    },
+    "panel_agency_year": {
+      "row_count": 144,
+      "logical_sha256": "4920fa2f9a12c04393d53cd73ae9d2cf4a9179d17c889badbbe0623edbbc47f1"
+    },
+    "provenance": {
+      "row_count": 144,
+      "logical_sha256": "f3106667e97c6d7906948aa73a69527ebf5fa076af3219a42fd2fcb14139033a"
+    },
+    "quality_flags": {
+      "row_count": 304,
+      "logical_sha256": "91586ae0a6c5e8e29e3b1513961e0331d98cdf04403659d1e03862849323a59e"
+    },
+    "sample_reconciliation": {
+      "row_count": 48,
+      "logical_sha256": "d32ef498c0bcf07923c221788d8075abc6f5efec64e916aa6f7fcdabc1a9dfac"
+    },
+    "scorecard_observations": {
+      "row_count": 144,
+      "logical_sha256": "1e50607556208635e5ff8cb0e77c125134bcc18b1923f203da2e2e7135f06621"
+    },
+    "source_documents": {
+      "row_count": 55,
+      "logical_sha256": "694bc99dc7208b1e7dfab602f6dc6f4a03c38e31c503234956cccbd6e469d3ac"
+    }
+  },
+  "six_result_files_byte_identical": {
+    "a5_agency_changes.csv": true,
+    "a5_correlations.csv": true,
+    "a5_descriptive_summary.csv": true,
+    "a5_influence.csv": true,
+    "a5_regression_estimates.csv": true,
+    "a5_results.json": true
+  },
+  "notebook": {
+    "executed_cells": 5,
+    "errors": 0,
+    "method": "IPython in-process",
+    "fresh_jupyter_kernel": "not verified: sandbox blocks kernel sockets; elevated launch also failed"
+  },
+  "trace_examples": {
+    "NASA": [
+      [
+        2021,
+        1.59,
+        1.7966666666666666,
+        3.203333333333333
+      ],
+      [
+        2022,
+        1.46,
+        1.7966666666666666,
+        3.203333333333333
+      ],
+      [
+        2023,
+        2.34,
+        1.7966666666666666,
+        3.203333333333333
+      ]
+    ],
+    "DOE": [
+      [
+        2021,
+        1.69,
+        2.033333333333333,
+        2.966666666666667
+      ],
+      [
+        2022,
+        1.99,
+        2.033333333333333,
+        2.966666666666667
+      ],
+      [
+        2023,
+        2.42,
+        2.033333333333333,
+        2.966666666666667
+      ]
+    ],
+    "HUD": [
+      [
+        2021,
+        -1.57,
+        2.7,
+        2.3
+      ],
+      [
+        2022,
+        4.31,
+        2.7,
+        2.3
+      ],
+      [
+        2023,
+        5.36,
+        2.7,
+        2.3
+      ]
+    ],
+    "USDA": [
+      [
+        2021,
+        3.38,
+        4.723333333333334,
+        0.27666666666666667
+      ],
+      [
+        2022,
+        5.36,
+        4.723333333333334,
+        0.27666666666666667
+      ],
+      [
+        2023,
+        5.43,
+        4.723333333333334,
+        0.27666666666666667
+      ]
+    ]
+  }
+}

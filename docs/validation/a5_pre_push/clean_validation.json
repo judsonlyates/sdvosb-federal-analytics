@@ -1,0 +1,91 @@
+{
+  "source_copy": "/workspace/scratch/849cbf5fcfba/a5-final-GBelbc/clean-checkout-6vkzbscn/sdvosb-federal-analytics",
+  "checks": {
+    "locked_setup": {
+      "command": [
+        "uv",
+        "sync",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "log": "locked_setup.log"
+    },
+    "tests_before_build": {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "pytest",
+        "-q",
+        "--tb=short"
+      ],
+      "exit_code": 0,
+      "log": "pytest_before_build.log"
+    },
+    "full_pipeline": {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "scripts/run_portfolio.py",
+        "--through",
+        "a5"
+      ],
+      "exit_code": 0,
+      "log": "full_pipeline.log"
+    },
+    "tests_after_build": {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "pytest",
+        "-q",
+        "--tb=short"
+      ],
+      "exit_code": 0,
+      "log": "pytest_after_build.log"
+    },
+    "preservation": {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "docs/validation/a5_revision_2026-10-24/check_preserved_results.py"
+      ],
+      "exit_code": 0,
+      "log": "preservation.log"
+    },
+    "feasibility": {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "scripts/feasibility_check.py",
+        "data/processed/sba_scorecard_sdvosb.csv"
+      ],
+      "exit_code": 0,
+      "log": "feasibility.log"
+    },
+    "notebook_cells": {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "docs/validation/a5_pre_push/execute_notebook_cells.py"
+      ],
+      "exit_code": 0,
+      "log": "notebook_cells.log"
+    }
+  },
+  "tests_left_project_a4_absent": true,
+  "a4_hash_unchanged_by_notebook_eda": "0698caf6e9b37680d4f8cc9802a398f862d657a592cbff5c136b66a1b204c959",
+  "repeated_result_and_figure_files_identical": 16,
+  "fresh_kernel_run": "not certified by this runner; see separately attributed Claude report",
+  "status": "pass"
+}

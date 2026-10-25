@@ -1,0 +1,219 @@
+Execution log; local absolute paths normalized for portability.
+> <project-root>/.venv/bin/python -m sdvosb_federal_analytics.etl --offline --raw-dir data/raw/20261011T183300Z
+{
+  "status": "success",
+  "input_template_rows": 144,
+  "rows": 144,
+  "duplicate_record_count": 0,
+  "rejected_record_count": 0,
+  "missing_cells_by_field": {
+    "sdvosb_prime_achievement_pct": 1,
+    "sdvosb_prime_goal_pct": 1,
+    "sdvosb_prime_dollars_millions": 1
+  },
+  "bad_record_action": "Fail the batch on malformed, duplicate, missing-source or conflicting records; keep previous database. Source-declared N/A is retained as NULL and flagged; negatives are retained and flagged.",
+  "agencies": 24,
+  "achievement_count": 143,
+  "goal_count": 143,
+  "dollars_count": 143,
+  "complete_three_field_rows": 143,
+  "counts_by_year": {
+    "2020": {
+      "sdvosb_prime_achievement_pct": 24,
+      "sdvosb_prime_goal_pct": 24,
+      "sdvosb_prime_dollars_millions": 24
+    },
+    "2021": {
+      "sdvosb_prime_achievement_pct": 24,
+      "sdvosb_prime_goal_pct": 24,
+      "sdvosb_prime_dollars_millions": 24
+    },
+    "2022": {
+      "sdvosb_prime_achievement_pct": 24,
+      "sdvosb_prime_goal_pct": 24,
+      "sdvosb_prime_dollars_millions": 24
+    },
+    "2023": {
+      "sdvosb_prime_achievement_pct": 24,
+      "sdvosb_prime_goal_pct": 24,
+      "sdvosb_prime_dollars_millions": 24
+    },
+    "2024": {
+      "sdvosb_prime_achievement_pct": 24,
+      "sdvosb_prime_goal_pct": 24,
+      "sdvosb_prime_dollars_millions": 24
+    },
+    "2025": {
+      "sdvosb_prime_achievement_pct": 23,
+      "sdvosb_prime_goal_pct": 23,
+      "sdvosb_prime_dollars_millions": 23
+    }
+  },
+  "source_errors": [],
+  "overlap_checks": 336,
+  "overlap_conflicts": 0,
+  "adjacent_edition_checks": 120,
+  "sample_values_compared": 48,
+  "sample_conflicts": 0,
+  "agencies_with_complete_baseline": 24,
+  "baseline_shortfall_positive": 12,
+  "negative_achievement_rows": [
+    {
+      "agency_id": "HUD",
+      "observation_fy": 2020,
+      "achievement_pct": "-5.04"
+    },
+    {
+      "agency_id": "HUD",
+      "observation_fy": 2021,
+      "achievement_pct": "-1.57"
+    }
+  ],
+  "source_document_count": 55,
+  "quality_flag_count": 304,
+  "analysis_ready_observations": 143,
+  "pipeline_mode": "full",
+  "database_replaced": true
+}
+Outputs written to <project-root>/data/processed
+> <project-root>/.venv/bin/python -m sdvosb_federal_analytics.verify_rerun
+{
+  "status": "pass",
+  "same_database_path": true,
+  "identical_logical_records_and_counts": true,
+  "first_run": {
+    "tables": {
+      "agencies": {
+        "row_count": 24,
+        "logical_sha256": "5470d42cb8a5dee110d1e51e92f8f5c7160a8fee406ad941f37cbe9a6507f9e3"
+      },
+      "agency_names": {
+        "row_count": 144,
+        "logical_sha256": "0e1b849ee41738c249e99b98b5a0ff9913f65ea9b3acbb77eee8ad67fea4fc96"
+      },
+      "overlap_checks": {
+        "row_count": 336,
+        "logical_sha256": "a2d95685e66d511605bcc7cf89312d31ec9395edc7cc77f63f6bd43887bcd2f2"
+      },
+      "panel_agency_year": {
+        "row_count": 144,
+        "logical_sha256": "4920fa2f9a12c04393d53cd73ae9d2cf4a9179d17c889badbbe0623edbbc47f1"
+      },
+      "provenance": {
+        "row_count": 144,
+        "logical_sha256": "f3106667e97c6d7906948aa73a69527ebf5fa076af3219a42fd2fcb14139033a"
+      },
+      "quality_flags": {
+        "row_count": 304,
+        "logical_sha256": "91586ae0a6c5e8e29e3b1513961e0331d98cdf04403659d1e03862849323a59e"
+      },
+      "sample_reconciliation": {
+        "row_count": 48,
+        "logical_sha256": "d32ef498c0bcf07923c221788d8075abc6f5efec64e916aa6f7fcdabc1a9dfac"
+      },
+      "scorecard_observations": {
+        "row_count": 144,
+        "logical_sha256": "1e50607556208635e5ff8cb0e77c125134bcc18b1923f203da2e2e7135f06621"
+      },
+      "source_documents": {
+        "row_count": 55,
+        "logical_sha256": "694bc99dc7208b1e7dfab602f6dc6f4a03c38e31c503234956cccbd6e469d3ac"
+      }
+    },
+    "checks": {
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "duplicate_fact_keys": 0
+    },
+    "exports": {
+      "cross_year_checks.csv": "d3ec367257eb15c7d15e64b4d68f04352431765ca1b18c5cfcade84d71b54026",
+      "panel_agency_year.csv": "27766f87bd655e80d5ff43cda205eb3b861e5999a650c27cd52df21b97554126",
+      "quality_flags.csv": "f2f8a47a11b15fa3ea2659ee784d3f3f704554b483a6634b428736cd07777041",
+      "row_provenance.csv": "613587dd7d5e647873cbc5b7a37b0cab3e80928caeea97981acaa8feb1e7c15a",
+      "sample_reconciliation.csv": "1219821e91e5f2549958dc467303971f95e48344983dbc08fb5ac622be0b743d",
+      "sba_scorecard_sdvosb.csv": "f9212ddb4351067f6feb6fbe783872ad11bbd6bd530cbb95b70d99b93f86cfe6"
+    }
+  },
+  "second_run": {
+    "tables": {
+      "agencies": {
+        "row_count": 24,
+        "logical_sha256": "5470d42cb8a5dee110d1e51e92f8f5c7160a8fee406ad941f37cbe9a6507f9e3"
+      },
+      "agency_names": {
+        "row_count": 144,
+        "logical_sha256": "0e1b849ee41738c249e99b98b5a0ff9913f65ea9b3acbb77eee8ad67fea4fc96"
+      },
+      "overlap_checks": {
+        "row_count": 336,
+        "logical_sha256": "a2d95685e66d511605bcc7cf89312d31ec9395edc7cc77f63f6bd43887bcd2f2"
+      },
+      "panel_agency_year": {
+        "row_count": 144,
+        "logical_sha256": "4920fa2f9a12c04393d53cd73ae9d2cf4a9179d17c889badbbe0623edbbc47f1"
+      },
+      "provenance": {
+        "row_count": 144,
+        "logical_sha256": "f3106667e97c6d7906948aa73a69527ebf5fa076af3219a42fd2fcb14139033a"
+      },
+      "quality_flags": {
+        "row_count": 304,
+        "logical_sha256": "91586ae0a6c5e8e29e3b1513961e0331d98cdf04403659d1e03862849323a59e"
+      },
+      "sample_reconciliation": {
+        "row_count": 48,
+        "logical_sha256": "d32ef498c0bcf07923c221788d8075abc6f5efec64e916aa6f7fcdabc1a9dfac"
+      },
+      "scorecard_observations": {
+        "row_count": 144,
+        "logical_sha256": "1e50607556208635e5ff8cb0e77c125134bcc18b1923f203da2e2e7135f06621"
+      },
+      "source_documents": {
+        "row_count": 55,
+        "logical_sha256": "694bc99dc7208b1e7dfab602f6dc6f4a03c38e31c503234956cccbd6e469d3ac"
+      }
+    },
+    "checks": {
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "duplicate_fact_keys": 0
+    },
+    "exports": {
+      "cross_year_checks.csv": "d3ec367257eb15c7d15e64b4d68f04352431765ca1b18c5cfcade84d71b54026",
+      "panel_agency_year.csv": "27766f87bd655e80d5ff43cda205eb3b861e5999a650c27cd52df21b97554126",
+      "quality_flags.csv": "f2f8a47a11b15fa3ea2659ee784d3f3f704554b483a6634b428736cd07777041",
+      "row_provenance.csv": "613587dd7d5e647873cbc5b7a37b0cab3e80928caeea97981acaa8feb1e7c15a",
+      "sample_reconciliation.csv": "1219821e91e5f2549958dc467303971f95e48344983dbc08fb5ac622be0b743d",
+      "sba_scorecard_sdvosb.csv": "f9212ddb4351067f6feb6fbe783872ad11bbd6bd530cbb95b70d99b93f86cfe6"
+    }
+  }
+}
+> <project-root>/.venv/bin/python -m sdvosb_federal_analytics.supplement
+{
+  "historical_rows": 216,
+  "historical_numeric_count": 215,
+  "vendor_rows": 144,
+  "vendor_numeric_count": 143,
+  "historical_overlap_checks": 384,
+  "vendor_overlap_checks": 192,
+  "excluded_gw_rows": 5,
+  "two_run_identical": true,
+  "logical_table_hashes": {
+    "historical_achievement": {
+      "rows": 216,
+      "sha256": "ec8b7fb4e78b3a2cd7c7b8d9b6f06a6187793fd4120c565979fe7871ea6d5549"
+    },
+    "vendor_counts": {
+      "rows": 144,
+      "sha256": "3693e54af26cabd236f05e8d796736bb5bb33ba0d71f67aeae45a683de6b3abc"
+    }
+  }
+}
+> <project-root>/.venv/bin/python -m sdvosb_federal_analytics.eda
+{
+  "agency_years": 144,
+  "n_figures": 10,
+  "welch_2024": 0.6443156291395863,
+  "welch_2025": 0.5204370281551339
+}
+Successfully built through A5

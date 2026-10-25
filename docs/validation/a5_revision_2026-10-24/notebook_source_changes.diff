@@ -1,0 +1,14 @@
+--- original notebook source
++++ corrected notebook source
+@@ -42,9 +42,9 @@
+ display(changes[['agency_id','baseline_average_pct','shortfall_pp']].sort_values('shortfall_pp',ascending=False))
+ 
+ Cell 5 (markdown)
+-## 3. Bivariate changes, the prespecified exploratory Welch comparison, and assumptions
++## 3. Bivariate changes, the documented exploratory Welch comparison, and assumptions
+ 
+-H0: equal mean FY2023-to-FY2024 changes between the two shortfall groups. The scientific directional prediction is a larger positive change in agencies below 5%. The primary test is a **two-sided Welch comparison**; its 95% interval, Hedges' g, group-specific Shapiro checks, Mann–Whitney sensitivity, and Spearman correlation are reported. Diagnostic normality tests do **not** determine which inferential test is selected.
++H0: equal mean FY2023-to-FY2024 changes between the two shortfall groups. The scientific directional prediction is a larger positive change in agencies whose FY2021–FY2023 average is below 5%. The A5 test was documented after an initial feasibility run, not blindly preregistered. The primary test is a **two-sided Welch comparison**; its 95% interval, Hedges' g, group-specific Shapiro checks, Mann–Whitney sensitivity, and Spearman correlation are reported. Diagnostic normality tests do **not** determine which inferential test is selected.
+ 
+ Cell 6 (code)
+ summary_2024 = welch_analysis(changes,2024)

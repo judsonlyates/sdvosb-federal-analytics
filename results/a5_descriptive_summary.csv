@@ -1,0 +1,9 @@
+variable,source_field,units,dtype,total_rows,nonmissing,missing,min,q25,median,mean,q75,max
+SBA goaling achievement,achievement_pct,percentage points,float64,144,143,1,-5.04,2.825,5.06,7.07160839161,7.885,60.13
+Agency scorecard goal,goal_pct,percent,float64,144,143,1,3,3,3,3.65734265734,5,5
+SBA-reported SDVOSB dollars,sdvosb_dollars_millions,USD millions,float64,144,143,1,-50.6,63.9,316.1,1208.84965035,706.35,12100
+FY2021–2023 baseline,baseline_average_pct,percentage points,float64,24,24,0,0.463333333333,2.67416666667,5.04666666667,6.94819444444,7.16833333333,36.5333333333
+Distance below 5%,shortfall_pp,percentage points,float64,24,24,0,0,0,0.138333333333,1.13416666667,2.32583333333,4.53666666667
+SDVOSB prime contractor count,sdvosb_prime_contractor_count,contractors,float64,144,143,1,18,37,127,387.79020979,347,3319
+SDVOSB/all small-business contractor ratio,sdvosb_to_small_business_ratio,proportion,float64,144,143,1,0.043254376931,0.076249770129,0.0971202710333,0.1122063139,0.128743150957,0.298846000796
+Historical achievement FY2017–2025,achievement_pct,percentage points,float64,216,215,1,-5.04,2.77,4.52,6.41134883721,6.88,60.13
