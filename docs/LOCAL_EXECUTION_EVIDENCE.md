@@ -2,7 +2,7 @@
 
 This file records what was actually run, where, and with what result, so the review checklist and the AI-use disclosure can point to it. It is updated whenever the status changes.
 
-**Current status:** the A5 package was pushed on October 24, 2026 (commit `94cb1c2`). Sections A, C, and D are assistant-run checks that preceded the push; Section B is my own execution and review on my own computer, completed after the push. Statements in Sections C and D that no commit or push had been made describe the state at the time of those checks.
+**Current status:** the A5 package was pushed on October 24, 2026 (commit `94cb1c2`), and I have confirmed completion of my personal local execution and review in Section B. Sections A, C, and D preserve the assistants' earlier checks and their environment-specific limits. Statements that no commit or push had been made describe the state at the time of those checks, not the current submission status.
 
 ## Section A. Clean-build verification on the integrated repository (October 14, 2026)
 
@@ -27,14 +27,13 @@ Performed by Claude in a Linux container on a checkout of the graded Assignment 
 
 **Key A5 statistics reproduced in this run.** FY2023→FY2024 Welch p = 0.644 (24 agencies); FY2023→FY2025 Welch p = 0.520 (23 agencies, USAID FY2025 missing). These match the October 14 exploratory run recorded in `docs/ANALYSIS_PLAN.md`, Section 8.
 
-## Section B. Student verification (completed October 24, 2026)
+## Section B. Student verification (completed)
 
-Performed by me, Judson L. Yates, on my own computer after the A5 push, using
-the commands documented in the root `README.md`. This section is my own
-confirmation and is kept separate from the assistant-run checks in Sections A,
-C, and D. It deliberately records outcomes only: no terminal logs, timings,
-library versions, or exact test counts are reproduced here, because I did not
-save them, and nothing in this section is copied from an assistant's run.
+I, Judson L. Yates, personally completed the local workflow documented in
+the root `README.md` on my own computer. This section records my confirmation
+of the completed steps and outcomes. Sections A, C, and D separately retain
+the assistants' checks and logs. Their timings, environment versions, and
+exact test counts are not presented as details of my local run.
 
 - [x] Synced the project dependencies with the existing lockfile.
 - [x] Ran the full documented A4-to-A5 build (`scripts/run_portfolio.py --through a5`) successfully.
@@ -66,11 +65,14 @@ statsmodels 0.15.0; Matplotlib 3.11.2; Seaborn 0.13.2; pytest 9.1.1.
 | Fresh-kernel `nbconvert --execute` | Not verified: local kernel sockets blocked; elevated launch also failed before execution |
 | In-process notebook execution | All five actual code cells passed in order under IPython/Python 3.11.17; rich outputs saved and method labeled in notebook metadata |
 
-The normal notebook command still needs an independent fresh-kernel check.
-The included fallback runner does not claim to be that check. A4 core source,
-schema, original tests, sample, proposal, and dependency lock are unchanged.
-Supplement read-only/path guards, chart layout, documentation, and regression
-tests are the targeted edits. Evidence is in `validation/a5_revision_2026-10-24/`.
+At the time of this OpenAI run, fresh-kernel execution had not been verified
+in that environment; the fallback runner is not a fresh-kernel check. Claude
+subsequently reported successful fresh-kernel execution, and my own notebook
+execution is recorded in Section B. These are separate verification records.
+A4 core source, schema, original tests, sample, proposal, and dependency lock
+were unchanged by this revision. Supplement read-only/path guards, chart
+layout, documentation, and regression tests were the targeted edits.
+Evidence is in `validation/a5_revision_2026-10-24/`.
 
 ## Section D. Pre-push correction and clean-copy validation
 

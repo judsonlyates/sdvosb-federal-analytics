@@ -1,5 +1,10 @@
 # AI Use Disclosure
 
+Current A5 status: my personal execution and review are complete. The
+[Assignment 5 section](#assignment-5-october-2026) records my work and the AI
+assistance used. Earlier assignment sections preserve their status at the
+time of those submissions, not the current A5 completion status.
+
 The A2 and A3 disclosures are preserved as written at the time. The A4 disclosure (October 11–12, 2026) follows them.
 
 ## Tools used
@@ -148,97 +153,68 @@ time; I will complete it before the A5 work begins.
 
 ## Assignment 5 (October 2026)
 
-This section records material AI assistance with A5. The computational checks
-attributed to assistants below were run by them, not by me; my own execution
-and review are recorded separately under "Personal execution and review" and
-in `LOCAL_EXECUTION_EVIDENCE.md`, Section B. Current status is in
-`REVIEW_CHECKLIST.md`.
+### My work and verification
+
+The research question, hypothesis, agency-year scope, and exposure definition
+remain my decisions, as recorded in the approved A3 proposal. I did not
+delegate those final decisions or my final analytical judgment to AI.
+
+I personally synced the project dependencies, successfully ran the full
+A4-to-A5 build, the test suite, and the A4 two-run reproducibility verifier,
+and opened the A5 notebook and executed its cells on my own computer. I
+traced the NASA and DOE values from the frozen SBA sources through the
+database to the baseline and shortfall calculations. I reviewed the code,
+executive summary, notebook, all ten figures, and this disclosure.
+
+I reviewed and adopted the final business interpretation in my own judgment:
+the group comparisons are inconclusive, not evidence that the groups changed
+equally or that the goal increase caused the observed changes.
 
 ### Tools used and where
 
-- **ChatGPT / OpenAI (October 14):** Prepared exploratory calculations from the
-  frozen data, then drafted the A5 supplementary extraction, analysis module,
-  tests, notebook, figures, and methods documentation. It independently audited
-  the integrated package, including its statistics, source preservation, and
-  rubric coverage.
-- **Claude / Anthropic (October 14):** Drafted the analysis-plan addendum from
-  the A4 feedback, integrated the A5 files with the graded A4 project, refreshed
-  the dependency lockfile, completed documentation, ran the clean-build checks
-  recorded in `LOCAL_EXECUTION_EVIDENCE.md`, Section A, and drafted the
-  executive summary.
-- **OpenAI assistant (October 24):** Corrected the baseline-group and 5%
-  threshold wording, narrowed causal and analysis-timing claims, repaired plot
-  labels and the methods link, incorporated this disclosure, and performed the
-  additional checks recorded in Section C of `LOCAL_EXECUTION_EVIDENCE.md`.
-  The assistant prepared a separate corrected review copy without committing
-  or pushing it.
-- **Claude / Anthropic (October 24):** Independently rebuilt the corrected
-  package and reported a successful fresh-kernel notebook run. It found the
-  tests-first database dependency and identified remaining submission-copy
-  status language.
-- **OpenAI assistant (pre-push revision):** Independently reproduced the
-  tests-first failure, the successful build and post-build tests, the central
-  statistics, and the saved result hashes. At my request it then isolated the
-  A5 test fixtures, added regression tests, aligned the formal hypothesis wording
-  with the already executed two-sided test, clarified one missing-data footer,
-  cleaned up submission documents, and mapped the work to the rubric. The test,
-  build, preservation, and notebook execution evidence is separately attributed
-  in `LOCAL_EXECUTION_EVIDENCE.md`. No new estimator or statistical result was
-  introduced, and this revision did not commit or push the project.
+- **ChatGPT / OpenAI:** Prepared exploratory calculations and drafted the
+  supplementary extraction, reusable analysis modules, tests, notebook,
+  figures, and methods documentation. It audited the integrated statistics,
+  source preservation, and rubric coverage, corrected group-definition
+  wording and plot labels, and fixed the tests-first database dependency
+  with isolated fixtures and regression tests. It also helped clarify the
+  formal hypotheses to match the existing two-sided test, revise this
+  disclosure, and publish updates I authorized.
+- **Claude / Anthropic:** Drafted the analysis-plan addendum and executive
+  summary, integrated A5 with the graded A4 repository, refreshed the
+  dependency lockfile and documentation, and independently rebuilt the
+  package. It reported successful fresh-kernel notebook execution, identified
+  the tests-first problem and stale review-copy language, and prepared the
+  earlier update recording my completed personal review.
 
-Preliminary numerical outputs were generated and shown before approval of the
-October 14 addendum. That does not mean I personally studied those results.
-The A3 hypothesis, exposure definition, and primary fixed-effects model remain
-unchanged. The extended diagnostics and fallback rules were refined after an
-initial feasibility run, not blindly preregistered.
-
-### Where AI was deliberately not used
-
-The student decisions recorded in the A3 disclosure remain mine: the research
-question and hypothesis, agency-year scope, and approved exposure definition.
-AI execution is not represented as my personal execution or as my
-source-to-database walkthrough; those are recorded as my own work below. The
-assistants did not perform my understanding or my adoption of the business
-interpretation. Section B of the execution record states the steps I
-reported completing; Claude formatted that record and this update at my
-direction and added nothing I did not report.
+This assistance included substantive code and prose drafts, not just
+proofreading. I reviewed the resulting work and retained responsibility for
+the submission and its interpretation.
 
 ### An error I caught
 
 An AI draft incorrectly stated that I had personally reviewed the preliminary
-model results. I corrected that claim on October 14: I had not read those
-results. The corrected documentation distinguishes outputs generated by AI
-from results personally reviewed by me. The baseline-group wording errors,
-plot-label problems, and broken methods link were found by the independent
-AI audit, not by me.
+model results on October 14. I corrected that statement because I had not
+reviewed them at that point. The completed personal review described above
+is a later action. The statistical wording and plotting defects identified
+by the independent AI audits remain attributed to those audits, not to me.
 
-### Verification ownership
+### Analysis chronology
 
-Automated build, test, notebook, and preservation checks performed by the
-assistants are attributed to them in `LOCAL_EXECUTION_EVIDENCE.md`, Sections
-A, C, and D; they are not claims of execution on my computer. My own execution
-is recorded in Section B of that file and summarized below.
+The A3 hypothesis, exposure definition, and primary fixed-effects model
+predate the exploratory feasibility run and remain unchanged. Preliminary
+outputs were generated before approval of the October 14 addendum; the
+extended diagnostics and fallback rules were refined after that run. They
+are not represented as a blind preregistration.
 
-### Personal execution and review (completed October 24, 2026)
+### Execution records and publication
 
-After the A5 push, I personally completed the documented local workflow on my
-own computer: I synced the project dependencies, ran the full A4-to-A5 build,
-ran the test suite, ran the A4 two-run reproducibility verification, and
-opened the A5 notebook and executed its cells. I traced the NASA and DOE
-source values from the frozen SBA files through the database to the baseline
-and shortfall calculations. I reviewed the code, the executive summary, the
-notebook, and all ten figures, and I reviewed and adopted the final
-interpretation and this disclosure. I did not keep terminal logs of that run,
-so Section B records outcomes rather than logs, and none of the environment
-details or counts reported in the assistants' sections are restated as mine.
+My completed local workflow is recorded in
+[Section B of the execution record](LOCAL_EXECUTION_EVIDENCE.md#section-b-student-verification-completed).
+Sections A, C, and D separately retain the assistants' checks, logs, and
+environment details. Those records are not relabeled as runs on my computer.
 
-### Submission authorization
-
-After receiving the disclosure summary, technical verification, and rubric
-review, I expressly authorized the corrected A5 repository update to be
-committed and pushed; the OpenAI assistant performed that repository operation
-at my direction on October 24, 2026 (commit `94cb1c2`). I then completed the
-personal execution and review above and authorized this documentation-only
-follow-up commit, which Claude prepared and pushed at my direction. It changes
-`AI_USE.md`, `LOCAL_EXECUTION_EVIDENCE.md`, and `REVIEW_CHECKLIST.md` only.
-Git history records the actual publication of both updates.
+I authorized the A5 submission and the subsequent documentation corrections.
+Assistants prepared and published the repository updates at my direction;
+Git history records the actual commit dates. This clarification changes
+documentation only, not code, data, figures, or statistical results.
